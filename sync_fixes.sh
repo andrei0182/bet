@@ -1,246 +1,39 @@
 #!/bin/bash
-# sync_fixes.sh — adds retry (full match-page reload) around ts-token
-# discovery in match_standings.py. The standings widget (where `ts` lives)
-# loads asynchronously with inconsistent timing on the live site — observed
-# anywhere from ~18s to 90+s, or sometimes not at all within one page load.
-# A fresh reload has a better chance of catching a fast render than waiting
-# indefinitely on a single load.
+# sync_fixes.sh — shortens the ts-token wait/retry budget in
+# match_standings.py. The standings widget is unreliable at scale (observed
+# not appearing even after 60-90s on multiple matches/leagues) — waiting
+# that long per match would make a full day's run impractically slow.
+# Fails fast instead: 2 short attempts (8s each, ~16s max) rather than 3
+# long ones (20s each, ~60s max). Per-team stats will simply stay blank
+# more often, which the pipeline already handles as a normal outcome.
 # Run from the repo root: bash sync_fixes.sh
 set -e
 
-cat > betscraper/match_standings.py << 'PYEOF_ANDREI'
-from __future__ import annotations
+python3 << 'PYEOF_ANDREI'
+path = "betscraper/match_standings.py"
+with open(path, "r", encoding="utf-8") as f:
+    content = f.read()
 
-import logging
-import re
+replacements = [
+    (
+        'def discover_ts_token(driver: WebDriver, wait_seconds: float = 20.0) -> str | None:',
+        'def discover_ts_token(driver: WebDriver, wait_seconds: float = 8.0) -> str | None:',
+    ),
+    (
+        '    wait_seconds: float = 20.0,\n    retries: int = 3,\n) -> tuple["TeamOverUnderStats", "TeamOverUnderStats"] | None:',
+        '    wait_seconds: float = 8.0,\n    retries: int = 2,\n) -> tuple["TeamOverUnderStats", "TeamOverUnderStats"] | None:',
+    ),
+]
 
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.ui import WebDriverWait
+for old, new in replacements:
+    if old not in content:
+        raise SystemExit(f"ERROR: expected text not found verbatim:\n{old!r}\nAborting without changes.")
+    content = content.replace(old, new, 1)
 
-from .consent import dismiss_overlays
+with open(path, "w", encoding="utf-8") as f:
+    f.write(content)
 
-logger = logging.getLogger(__name__)
-
-# ---- Confirmed (2026-09-12), via DevTools on a real match page --------------
-# Per-team Over/Under hit-rate stats (Steps 7-8's original goal) live on a
-# LEAGUE/SEASON standings AJAX endpoint, not a per-match one:
-#   {league_base_url}standings/?table=over_under&table_sub=overall&ts={ts}
-#       &dcheck=0&as-ajax=1&l=en&event_context={match_id}
-# where league_base_url is the match URL with its last two path segments
-# (match-slug/match-id/) stripped, e.g.
-#   https://www.betexplorer.com/football/england/premier-league-2025-2026/
-# CONFIRMED DIFFERENCES from the OU-odds endpoint (match_odds.py):
-#   - needs a `ts` session token (the OU-odds endpoint didn't)
-#   - returns raw HTML directly, NOT a {"odds": "..."} JSON wrapper
-# The response contains one <div id="box-table-type-6-{line}"> per O/U line
-# (0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5), each with a full 20-team league table:
-# matches played, Over count, Under count, goals for:against, goals/match,
-# and last-5-matches form. Rows are tagged data-def-order and a class
-# "glib-participant-{team_id}" — team_id matches the id in that team's
-# profile URL (/football/team/{slug}/{team_id}/).
-_TS_PATTERN = re.compile(r"[?&]ts=([A-Za-z0-9]+)")
-_TEAM_ROW_PATTERN = re.compile(
-    r'glib-participant-([A-Za-z0-9]+)".*?'
-    r'<td class="matches_played col_matches_played">(\d+)</td>\s*'
-    r'<td class="over col_over">(\d+)</td>\s*'
-    r'<td class="under col_under">(\d+)</td>',
-    re.DOTALL,
-)
-
-
-def build_league_base_url(match_url: str) -> str:
-    """Strip the match-slug/match-id/ tail off a confirmed match URL to get
-    the league/season base URL, e.g.
-    "https://www.betexplorer.com/football/england/premier-league-2025-2026/sunderland-arsenal/YoNI2r8F/"
-    -> "https://www.betexplorer.com/football/england/premier-league-2025-2026/"
-    """
-    trimmed = match_url.rstrip("/")
-    base, _match_slug, _match_id = trimmed.rsplit("/", 2)
-    return base + "/"
-
-
-def discover_ts_token(driver: WebDriver, wait_seconds: float = 20.0) -> str | None:
-    """Find the `ts` session token by regex-searching the currently loaded
-    page's source. CONFIRMED to appear in ts=XXXXXXXX form somewhere in the
-    match page's own AJAX links (it's the same token the page's own JS uses
-    to call this same standings endpoint when a person clicks the O/U tab).
-
-    CONFIRMED: the widget this token lives in (div#standingsComponent) loads
-    lazily/asynchronously — on the live site this has taken anywhere from
-    ~18s to 90+s to appear after navigation, well after document.readyState
-    reports "complete", and sometimes doesn't appear within a single page
-    load at all. Poll page_source for the token rather than checking it
-    once immediately; callers needing more resilience than a single
-    `wait_seconds` budget should retry via a full page reload (see
-    extract_over_under_stats).
-    """
-    try:
-        WebDriverWait(driver, wait_seconds).until(
-            lambda d: _TS_PATTERN.search(d.page_source) is not None
-        )
-    except TimeoutException:
-        return None
-    match = _TS_PATTERN.search(driver.page_source)
-    return match.group(1) if match else None
-
-
-def build_standings_url(
-    match_url: str, ts: str, match_id: str, table_sub: str = "overall"
-) -> str:
-    base = build_league_base_url(match_url)
-    return (
-        f"{base}standings/?table=over_under&table_sub={table_sub}&ts={ts}"
-        f"&dcheck=0&as-ajax=1&l=en&event_context={match_id}"
-    )
-
-
-def fetch_standings_html(
-    driver: WebDriver, url: str, wait_seconds: float = 15.0
-) -> str | None:
-    """Fetch the standings AJAX endpoint's raw HTML response. Returns None on
-    any failure (network, missing ts, etc.) rather than raising — caller
-    decides how to handle a miss.
-    """
-    script = """
-    var callback = arguments[arguments.length - 1];
-    fetch(arguments[0], {headers: {'X-Requested-With': 'XMLHttpRequest'}, credentials: 'same-origin'})
-        .then(function(r) { return r.text(); })
-        .then(function(data) { callback(data); })
-        .catch(function(err) { callback(null); });
-    """
-    try:
-        driver.set_script_timeout(wait_seconds)
-        return driver.execute_async_script(script, url)
-    except Exception:
-        return None
-
-
-def parse_team_over_under_row(
-    html: str, team_id: str, line: float = 2.5
-) -> tuple[int, int, int] | None:
-    """Find one team's row within the box for the given O/U line.
-
-    Returns (matches_played, over_count, under_count), or None if the line's
-    box or the team's row isn't found in the response.
-    """
-    line_key = f"{line:g}"  # 2.5 -> "2.5", 1.0 -> "1" — matches the site's box-id format for whole numbers seen (e.g. table=2 not confirmed; only .5 lines seen so far)
-    if "." not in line_key:
-        line_key = f"{line:.1f}"
-    box_start = html.find(f'id="box-table-type-6-{line_key}"')
-    if box_start == -1:
-        return None
-    box_end = html.find(f'id="last_updated_box-table-type-6-{line_key}"', box_start)
-    box_html = html[box_start : box_end if box_end != -1 else None]
-
-    for match in _TEAM_ROW_PATTERN.finditer(box_html):
-        row_team_id, matches_played, over, under = match.groups()
-        if row_team_id == team_id:
-            return int(matches_played), int(over), int(under)
-    return None
-
-
-_TEAM_PROFILE_URL_PATTERN = re.compile(r"/football/team/[^/]+/([A-Za-z0-9]+)/?$")
-
-
-def extract_team_id(driver: WebDriver, team_name: str) -> str | None:
-    """Find a team's id by matching an anchor's visible text against
-    team_name (case-insensitive), among links to team profile pages.
-
-    CONFIRMED (2026-09-12): on a match's own page, exactly two anchors with
-    href*='/football/team/' carry visible text — the home and away team
-    names — and both link straight to that team's profile URL
-    (/football/team/{slug}/{team_id}/). The rest of the team-profile links
-    on the page (from an embedded standings/form widget covering the whole
-    league) have empty visible text, so matching on non-empty text that
-    equals the team's name (as already known from the daily match list) is
-    reliable — no need to touch the standings AJAX response at all for this
-    lookup.
-    """
-    needle = team_name.strip().lower()
-    links = driver.find_elements(By.CSS_SELECTOR, "a[href*='/football/team/']")
-    for link in links:
-        text = (link.text or "").strip().lower()
-        if text != needle:
-            continue
-        href = link.get_attribute("href") or ""
-        match = _TEAM_PROFILE_URL_PATTERN.search(href)
-        if match:
-            return match.group(1)
-    return None
-
-
-def extract_over_under_stats(
-    driver: WebDriver,
-    match_url: str,
-    match_id: str,
-    home_team: str,
-    away_team: str,
-    lines: tuple[float, ...] = (1.5, 2.5, 3.5),
-    wait_seconds: float = 20.0,
-    retries: int = 3,
-) -> tuple["TeamOverUnderStats", "TeamOverUnderStats"] | None:
-    """Full pipeline: discover the ts token, resolve both teams' ids, fetch
-    the standings response once, and read off each requested O/U line for
-    both teams.
-
-    The standings widget (where `ts` lives) loads asynchronously with
-    inconsistent timing on the live site — observed anywhere from ~18s to
-    90+s, or sometimes not at all within a single page load. If the token
-    doesn't appear within `wait_seconds` on a given attempt, reloads the
-    match page and tries again, up to `retries` times — a fresh reload has
-    a better chance of catching a fast render than waiting indefinitely.
-
-    Returns None (rather than raising) if the ts token, either team's id, or
-    the standings fetch itself can't be resolved after all retries —
-    callers should treat that as "stats unavailable for this match" and
-    move on, the same as stats_eligible=False elsewhere in this pipeline.
-    """
-    from .models import TeamOverUnderStats  # local import to avoid a cycle at module load
-
-    ts = None
-    for attempt in range(1, retries + 1):
-        ts = discover_ts_token(driver, wait_seconds=wait_seconds)
-        if ts:
-            break
-        logger.warning(
-            "extract_over_under_stats: ts token not found on attempt %d/%d for %s",
-            attempt, retries, match_url,
-        )
-        if attempt < retries:
-            driver.get(match_url)
-            dismiss_overlays(driver)
-
-    if not ts:
-        return None
-
-    home_id = extract_team_id(driver, home_team)
-    away_id = extract_team_id(driver, away_team)
-    if not home_id or not away_id:
-        return None
-
-    url = build_standings_url(match_url, ts, match_id)
-    html = fetch_standings_html(driver, url)
-    if not html:
-        return None
-
-    home_stats = TeamOverUnderStats()
-    away_stats = TeamOverUnderStats()
-    for line in lines:
-        line_key = f"{line:.1f}".replace(".", "_")
-        home_row = parse_team_over_under_row(html, home_id, line)
-        away_row = parse_team_over_under_row(html, away_id, line)
-        if home_row:
-            _matches, over, under = home_row
-            setattr(home_stats, f"over_{line_key}", str(over))
-            setattr(home_stats, f"under_{line_key}", str(under))
-        if away_row:
-            _matches, over, under = away_row
-            setattr(away_stats, f"over_{line_key}", str(over))
-            setattr(away_stats, f"under_{line_key}", str(under))
-
-    return home_stats, away_stats
+print("Patched betscraper/match_standings.py: ts-token wait reduced to 2 attempts x 8s (~16s max per match, down from ~60s).")
 PYEOF_ANDREI
 
 echo "Verifying syntax..."
