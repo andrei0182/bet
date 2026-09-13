@@ -1,7 +1,0 @@
-nohup: ignoring input
-INFO:WDM:====== WebDriver manager ======
-INFO:WDM:Driver [/home/codespace/.wdm/drivers/chromedriver/linux64/153.0.8010.36/chromedriver-linux64/chromedriver] found in cache by browser version
-WARNING:betscraper.match_list:load_date attempt 1/3 timed out for https://www.betexplorer.com/football/results/?year=2026&month=09&day=13 — retrying
-INFO:betscraper.consent:Dismissed cookie-consent banner via selector: #onetrust-accept-btn-handler
-INFO:root:Found 1263 matches for 2026-09-13.
-INFO:root:Saved output/matches.xlsx (1263 matches).
