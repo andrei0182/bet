@@ -1,3 +1,12 @@
+#!/bin/bash
+# sync_fixes.sh — replaces the stale README.md (written before today's
+# rewrite — described unverified selectors and a Selenium-per-match
+# architecture that no longer exists) with accurate setup/usage docs and
+# an up-to-date project layout.
+# Run from the repo root: bash sync_fixes.sh
+set -e
+
+cat > README.md << 'MDEOF_ANDREI'
 # BetExplorer scraper
 
 Scrapes football match data from betexplorer.com for a given date: teams,
@@ -111,3 +120,6 @@ version routed every per-match lookup through a real browser page load,
 which was both far slower and, for the hit-rate stats specifically,
 unreliably slow to render in a scripted Chrome session even though the
 same data is available instantly via a direct HTTP request.
+MDEOF_ANDREI
+
+echo "README.md rewritten."
