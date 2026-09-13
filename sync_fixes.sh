@@ -1,78 +1,58 @@
 #!/bin/bash
-# sync_fixes.sh — fixes a regression: 1X2 odds cells (td.table-main__odds)
-# exist in the DOM as soon as match rows appear, but their TEXT populates
-# asynchronously slightly later (documented in selectors.py's ODDS_CELLS
-# comment). load_date's WebDriverWait only waited for row presence, not for
-# odds text — on a fast page load, extraction read the cells before their
-# text rendered, silently returning None for every match's 1X2 odds.
-# Adds a short additional wait for at least one odds cell to have non-empty
-# text before proceeding, bounded so it doesn't hang if a page genuinely
-# has no odds populated at all.
+# sync_fixes.sh — increases retry tolerance for 429/5xx errors in both
+# match_odds.py and match_standings.py (total 4->8 attempts, backoff 1.0->2.0
+# — more patience before giving up on a single match's request), and lowers
+# default --workers 5->3 in main.py to reduce how hard we hammer the site
+# under sustained load across thousands of matches.
 # Run from the repo root: bash sync_fixes.sh
 set -e
 
-python3 << 'PYEOF_ANDREI'
-path = "betscraper/match_list.py"
+for f in betscraper/match_odds.py betscraper/match_standings.py; do
+  python3 - "$f" << 'PYEOF_ANDREI'
+import sys
+path = sys.argv[1]
 with open(path, "r", encoding="utf-8") as f:
     content = f.read()
 
-old = '''            driver.get(url)
-            dismiss_overlays(driver)
-            WebDriverWait(driver, wait_seconds).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, sel.MATCH_ROW))
-            )
-            return  # success'''
-
-new = '''            driver.get(url)
-            dismiss_overlays(driver)
-            WebDriverWait(driver, wait_seconds).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, sel.MATCH_ROW))
-            )
-            _wait_for_odds_text(driver)
-            return  # success'''
+old = '_retry = Retry(total=4, backoff_factor=1.0, status_forcelist=[429, 500, 502, 503, 504], respect_retry_after_header=True)'
+new = '_retry = Retry(total=8, backoff_factor=2.0, status_forcelist=[429, 500, 502, 503, 504], respect_retry_after_header=True)'
 
 if old not in content:
-    raise SystemExit("ERROR: expected load_date success block not found verbatim — aborting without changes.")
+    raise SystemExit(f"ERROR: expected Retry(...) line not found verbatim in {path} — aborting without changes.")
 content = content.replace(old, new, 1)
-
-# Insert the helper right before load_date's definition.
-anchor = "def load_date(driver: WebDriver, date: dt.date, wait_seconds: int = DEFAULT_WAIT, retries: int = 3) -> None:"
-helper = '''def _wait_for_odds_text(driver: WebDriver, settle_seconds: float = 8.0) -> None:
-    """Match rows (and their odds <td> cells) appear in the DOM as soon as
-    presence_of_element_located(MATCH_ROW) succeeds, but the odds cells'
-    TEXT populates asynchronously slightly after that (see ODDS_CELLS'
-    comment in selectors.py) — on a fast page load, reading them
-    immediately silently returns empty/None for every match's 1X2 odds.
-    Waits for at least one odds cell to have non-empty text as a signal
-    that rendering has caught up. Bounded and non-fatal: if the page
-    genuinely has no odds populated yet for any match (e.g. a date far
-    enough in the future that no bookmaker has posted odds), this times
-    out quietly and extraction proceeds anyway rather than retrying the
-    whole page load forever.
-    """
-    try:
-        WebDriverWait(driver, settle_seconds).until(
-            lambda d: any(
-                el.text.strip() for el in d.find_elements(By.CSS_SELECTOR, sel.ODDS_CELLS)
-            )
-        )
-    except TimeoutException:
-        logger.info(
-            "_wait_for_odds_text: no odds cell text appeared within %.0fs — "
-            "proceeding anyway (may be a date with no odds posted yet)",
-            settle_seconds,
-        )
-
-
-'''
-if anchor not in content:
-    raise SystemExit("ERROR: load_date anchor not found verbatim — aborting without changes.")
-content = content.replace(anchor, helper + anchor, 1)
 
 with open(path, "w", encoding="utf-8") as f:
     f.write(content)
+print(f"Patched {path}: retry total 4->8, backoff_factor 1.0->2.0.")
+PYEOF_ANDREI
+done
 
-print("Patched betscraper/match_list.py: load_date now waits for odds cell text to populate before extraction.")
+python3 << 'PYEOF_ANDREI'
+path = "main.py"
+with open(path, "r", encoding="utf-8") as f:
+    content = f.read()
+
+old = '''    parser.add_argument(
+        "--workers",
+        type=int,
+        default=5,
+        help="Concurrent threads for --with-stats' per-match HTTP requests (default: 5 — "
+        "higher values risk 429 Too Many Requests from the site).",
+    )'''
+new = '''    parser.add_argument(
+        "--workers",
+        type=int,
+        default=3,
+        help="Concurrent threads for --with-stats' per-match HTTP requests (default: 3 — "
+        "higher values risk 429 Too Many Requests from the site under sustained load).",
+    )'''
+if old not in content:
+    raise SystemExit("ERROR: --workers arg block not found verbatim in main.py — aborting without changes.")
+content = content.replace(old, new, 1)
+
+with open(path, "w", encoding="utf-8") as f:
+    f.write(content)
+print("Patched main.py: default --workers 5 -> 3.")
 PYEOF_ANDREI
 
 echo "Verifying syntax..."
