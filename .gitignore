@@ -11,3 +11,4 @@ chromedriver.log
 run_log*.txt
 run_final*.txt
 odds_curl.json
+run_*.txt
