@@ -34,12 +34,14 @@ _COLUMN_LABELS = {
     "home_under_1.5": "Home Under 1.5 (matches)",
     "home_over_2.5": "Home Over 2.5 (matches)",
     "home_under_2.5": "Home Under 2.5 (matches)",
+    "home_played_2.5": "Home Played (2.5 line)",
     "home_over_3.5": "Home Over 3.5 (matches)",
     "home_under_3.5": "Home Under 3.5 (matches)",
     "away_over_1.5": "Away Over 1.5 (matches)",
     "away_under_1.5": "Away Under 1.5 (matches)",
     "away_over_2.5": "Away Over 2.5 (matches)",
     "away_under_2.5": "Away Under 2.5 (matches)",
+    "away_played_2.5": "Away Played (2.5 line)",
     "away_over_3.5": "Away Over 3.5 (matches)",
     "away_under_3.5": "Away Under 3.5 (matches)",
     "prob_over_1.5": "Probability Over 1.5",
@@ -53,6 +55,12 @@ _COLUMN_LABELS = {
     "avg_odds_under": "Avg Odds Under 2.5",
     "avg_prob_over_2_5": "Avg Probability Over 2.5",
 }
+
+# Minimum number of played matches (with 2.5-line stats) each team must have
+# before a match is trusted enough to enter the "100% Over 2.5" sheet — a
+# team with only 2 matches (both Over 2.5) is far less reliable than one
+# with 20, even though both show prob_over_2.5 == 1.0.
+MIN_MATCHES_FOR_CONFIDENCE = 8
 
 _MAIN_PERCENT_COLUMNS = {"prob_over_1.5", "prob_over_2.5", "prob_over_3.5"}
 _MAIN_ODDS_COLUMNS = {"odds_1", "odds_x", "odds_2", "odds_over", "odds_under"}
@@ -77,6 +85,15 @@ def _hit_rate(over_val, under_val) -> float | None:
     if total == 0:
         return None
     return over / total
+
+
+def _played_count(over_val, under_val) -> int | None:
+    """Number of matches behind a hit-rate (over + under), or None if either
+    count is missing/non-numeric (see _hit_rate)."""
+    try:
+        return int(over_val) + int(under_val)
+    except (TypeError, ValueError):
+        return None
 
 
 def add_probability_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -105,6 +122,13 @@ def add_probability_columns(df: pd.DataFrame) -> pd.DataFrame:
             return sum(rates) / len(rates) if rates else None
 
         df[f"prob_over_{line_key}"] = df.apply(_row_prob, axis=1)
+
+    df["home_played_2.5"] = df.apply(
+        lambda row: _played_count(row.get("home_over_2.5"), row.get("home_under_2.5")), axis=1
+    )
+    df["away_played_2.5"] = df.apply(
+        lambda row: _played_count(row.get("away_over_2.5"), row.get("away_under_2.5")), axis=1
+    )
     return df
 
 
@@ -134,20 +158,28 @@ def build_league_summary(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def build_high_confidence_over25(df: pd.DataFrame) -> pd.DataFrame:
-    """Matches where Probability Over 2.5 is exactly 100% — both teams have
-    gone Over 2.5 in every game of theirs this season (see
-    add_probability_columns). Only the columns needed to place a bet on
-    one: league, kick-off time, both teams, and the Over 2.5 odds.
+def build_high_confidence_over25(df: pd.DataFrame, min_matches: int = MIN_MATCHES_FOR_CONFIDENCE) -> pd.DataFrame:
+    """Matches where Probability Over 2.5 is exactly 100% AND both teams have
+    at least `min_matches` played matches behind that figure (see
+    add_probability_columns) — a team with only 2 matches (both Over 2.5)
+    is far less reliable than one with 20, even though both show
+    prob_over_2.5 == 1.0. Only the columns needed to place a bet on one:
+    league, kick-off time, both teams, and the Over 2.5 odds.
     """
     cols = [
         "league", "time", "home_team", "away_team", "odds_over", "prob_over_2.5",
-        "home_over_2.5", "home_under_2.5", "away_over_2.5", "away_under_2.5",
+        "home_over_2.5", "home_under_2.5", "home_played_2.5",
+        "away_over_2.5", "away_under_2.5", "away_played_2.5",
         "match_url",
     ]
-    if df.empty or "prob_over_2.5" not in df.columns:
+    required = {"prob_over_2.5", "home_played_2.5", "away_played_2.5"}
+    if df.empty or not required.issubset(df.columns):
         return pd.DataFrame(columns=cols)
-    filtered = df[df["prob_over_2.5"] >= 1.0][cols].copy()
+    filtered = df[
+        (df["prob_over_2.5"] >= 1.0)
+        & (df["home_played_2.5"] >= min_matches)
+        & (df["away_played_2.5"] >= min_matches)
+    ][cols].copy()
     return filtered.sort_values(["league", "time"]).reset_index(drop=True)
 
 
