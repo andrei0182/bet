@@ -15,3 +15,4 @@ run_*.txt
 
 # Botul „gol în prima repriză”: istoricul și starea stau în cache-ul Actions
 state/
+vstate/

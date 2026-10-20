@@ -175,3 +175,36 @@ pytest tests/
 TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... python fh_bot.py --test-telegram
 TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... python fh_bot.py --morning --max-minutes 0
 ```
+
+## Scanner de valoare: Superbet vs Pinnacle
+
+`value_bot.py` (pachetul `valuebets/`) caută pariurile unde Superbet plătește mai
+mult decât cota corectă. Cota corectă vine de la Pinnacle, casa cu cele mai precise
+cote din piață, după ce i se scoate marja (probabilitățile normalizate la 100%).
+
+Avantaj = cota Superbet / cota corectă − 1. Pe termen lung, profitul așteptat la
+o miză de 1 e chiar acest procent. Un pronostic cu șansă mare nu e același lucru:
+la cota 1.25 și 80% șansă reală, profitul așteptat e zero.
+
+Piețe comparate: 1X2, Peste/Sub (linii .5) pe tot meciul și pe prima repriză.
+Filtre (variabile opționale):
+
+| Variabilă | Implicit | Ce face |
+|---|---|---|
+| `VAL_MIN_EDGE` | 3 | avantajul minim, în procente |
+| `VAL_MIN_FAIR` / `VAL_MAX_FAIR` | 1.3 / 4 | doar cote corecte în intervalul ăsta (fără cote foarte mici sau outsideri) |
+| `VAL_MIN_LIMIT` | 250 | miza maximă Pinnacle pe piață; la ligile mici Pinnacle e mai puțin precis |
+| `VAL_WINDOW_H` | 12 | doar meciurile care încep în următoarele ore |
+| `VAL_MAX_POST` | 10 | câte pariuri noi pe rulare |
+
+Verificat pe 2026-10-20 (170 de meciuri potrivite): marja Superbet e ~8% la 1X2 și
+la totaluri, deci pariurile cu valoare sunt rare, câteva pe zi, aproape toate la 1X2.
+
+Fiecare pariu se salvează în `data/value_bets.csv` cu cota luată, cota corectă și
+cota corectă de la start (ultima văzută înainte de meci). Seara (`POST_EVENING`)
+vine bilanțul cu profitul în unități (miză 1), ROI și **CLV** (cota luată față de
+cota corectă de la start). Un CLV pozitiv constant e semnul că avantajul e real;
+profitul se vede abia după sute de pariuri.
+
+Workflow-ul `.github/workflows/value-telegram.yml` rulează la minutele 12 și 42 ale
+fiecărei ore, cu aceleași secrete Telegram. Local: `python value_bot.py --dry-run`.
