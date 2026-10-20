@@ -1,12 +1,19 @@
 name: Gol în prima repriză (Telegram)
 
-# La fiecare 20 de minute rulează fh_bot.py:
+# Rulează fh_bot.py continuu, în rulări de câte o oră (MAX_MINUTES): la final,
+# fiecare rulare o pornește singură pe următoarea (workflow_dispatch cu
+# GITHUB_TOKEN), pentru că GitHub nu garantează cron-urile dese -- în
+# andrei0182/live, cron-ul de 20 de minute a pornit în realitate la ~5 ore.
+# Cron-ul orar de mai jos doar repornește lanțul dacă s-a rupt; concurrency
+# ține cel mult o rulare activă și una în așteptare. CHAIN=off (variabilă)
+# oprește lanțul; Actions > workflow > Disable workflow îl oprește de tot.
+# În fiecare minut, fh_bot.py:
 # - după POST_MORNING (ora României, o dată pe zi): actualizează istoricul
 #   BetExplorer și publică pe canal meciurile zilei cu cea mai mare șansă de
 #   gol în prima repriză (doar cele din oferta Superbet);
 # - după POST_EVENING (o dată pe zi): publică bilanțul zilei;
-# - urmărește live meciurile alese max. MAX_MINUTES minute, cu o verificare
-#   pe minut, și trimite alertă dacă sunt tot 0-0 în minutul FH_MINUTE; după
+# - verifică live meciurile alese și trimite alertă dacă sunt tot 0-0 în
+#   minutul FH_MINUTE; după
 #   alertă postează „GOOOOOOL!” la primul gol din prima repriză sau un mesaj
 #   trist dacă pauza vine la 0-0.
 # Secrete necesare: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (aceleași ca în
@@ -18,7 +25,7 @@ name: Gol în prima repriză (Telegram)
 
 on:
   schedule:
-    - cron: "2,22,42 * * * *"
+    - cron: "2 * * * *"
   workflow_dispatch:
     inputs:
       test_telegram:
@@ -33,8 +40,8 @@ on:
       minutes:
         description: "Cât timp urmărește meciurile (minute)"
         type: choice
-        options: ["18", "60", "120", "180"]
-        default: "18"
+        options: ["60", "120", "180"]
+        default: "60"
 
 concurrency:
   group: fh-bot
@@ -42,12 +49,13 @@ concurrency:
 
 permissions:
   contents: write  # comite data/fh_picks.csv
+  actions: write  # pornește rularea următoare
 
 jobs:
   bot:
     runs-on: ubuntu-latest
     # Acoperă cea mai lungă rulare manuală (180 de minute) plus istoricul;
-    # rulările programate se opresc singure după MAX_MINUTES.
+    # o rulare obișnuită se oprește singură după MAX_MINUTES (60).
     timeout-minutes: 210
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -62,7 +70,7 @@ jobs:
       POSTS: ${{ vars.POSTS || 'on' }}
       FH_GIF_GOAL: ${{ vars.FH_GIF_GOAL || '' }}
       FH_GIF_NO_GOAL: ${{ vars.FH_GIF_NO_GOAL || '' }}
-      MAX_MINUTES: ${{ inputs.minutes || '18' }}
+      MAX_MINUTES: ${{ inputs.minutes || '60' }}
     steps:
       - name: Skip if Telegram secrets are missing
         if: env.TELEGRAM_BOT_TOKEN == '' || env.TELEGRAM_CHAT_ID == ''
@@ -123,3 +131,9 @@ jobs:
             sleep 5
           done
           exit 1
+
+      - name: Start next run
+        if: always() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && !inputs.test_telegram && vars.CHAIN != 'off'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run fh-telegram.yml --ref "${GITHUB_REF_NAME}"

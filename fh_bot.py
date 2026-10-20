@@ -1,11 +1,12 @@
 """Botul Telegram „gol în prima repriză”.
 
-La fiecare rulare (workflow-ul o pornește la 20 de minute):
+Rulează continuu, în rulări de câte o oră care o pornesc singure pe
+următoarea (workflow-ul fh-telegram.yml); în fiecare minut:
 1. dimineața, după POST_MORNING (o dată pe zi): actualizează istoricul
    BetExplorer, alege meciurile zilei cu cea mai mare șansă de gol în prima
    repriză (doar cele din oferta Superbet) și le publică pe canal;
 2. seara, după POST_EVENING (o dată pe zi): publică rezultatele zilei;
-3. urmărește live meciurile alese și trimite alertă dacă sunt tot 0-0 în
+3. verifică live meciurile alese și trimite alertă dacă sunt tot 0-0 în
    minutul FH_MINUTE (implicit 20) al primei reprize; după alertă urmărește
    meciul până la pauză și postează „GOOOOOOL!” + 🎉 la primul gol din prima
    repriză sau „Fără gol” + 😭 dacă pauza vine la 0-0 (cu GIF-urile din
@@ -53,6 +54,8 @@ STATE_PATH = os.path.join(STATE_DIR, "fh_state.json")
 FIRST_HALF_WINDOW = dt.timedelta(minutes=55)
 # După alertă meciul se urmărește până la pauză, cu marjă pentru start întârziat.
 ALERTED_WINDOW = dt.timedelta(minutes=80)
+POLL_SECONDS = 60
+RETRY_POSTS = dt.timedelta(minutes=20)
 
 
 def env_float(name: str, default: float) -> float:
@@ -168,71 +171,81 @@ def evening(now: dt.datetime, state: dict) -> None:
         state["evening"] = today.isoformat()
 
 
-def monitor(state: dict, max_minutes: float, poll_seconds: int = 60) -> None:
-    """Urmărește pronosticurile live până la `max_minutes`; iese imediat dacă
-    niciun meci nu e în prima repriză și niciunul nu începe în fereastra asta."""
-    start = dt.datetime.now(dt.timezone.utc)
-    deadline = start + dt.timedelta(minutes=max_minutes)
-    picks = [p for p in load_picks(PICKS_PATH) if p.result == PENDING and p.superbet_id]
+def poll(state: dict, deadline: dt.datetime) -> None:
+    """O verificare live a pronosticurilor: alerta din minutul FH_MINUTE și,
+    după alertă, golul din prima repriză sau pauza la 0-0."""
+    now = dt.datetime.now(dt.timezone.utc)
     closed = set(state.setdefault("closed", []))
+    alerted = {a.get("key") for a in state.get("alerts", [])}
+    watch = []
+    for p in load_picks(PICKS_PATH):
+        kickoff = p.kickoff_utc()
+        if p.result != PENDING or not p.superbet_id or p.key in closed or kickoff is None:
+            continue
+        window = ALERTED_WINDOW if p.key in alerted else FIRST_HALF_WINDOW
+        if kickoff <= deadline and now <= kickoff + window:
+            watch.append(p)
+    if not watch:
+        return
 
-    while True:
-        now = dt.datetime.now(dt.timezone.utc)
-        alerted = {a.get("key") for a in state.get("alerts", [])}
-        watch = []
-        for p in picks:
-            kickoff = p.kickoff_utc()
-            if p.key in closed or kickoff is None:
-                continue
-            window = ALERTED_WINDOW if p.key in alerted else FIRST_HALF_WINDOW
-            if kickoff <= deadline and now <= kickoff + window:
-                watch.append(p)
-        if not watch:
-            logger.info("Niciun meci de urmărit acum.")
-            return
-
-        today = now.date()
-        live = {str(m.event_id): m for m in fetch_matches("active-live", today - dt.timedelta(days=1), today + dt.timedelta(days=2))}
-        for p in watch:
-            m = live.get(p.superbet_id)
-            if m is None:
-                continue
-            if p.key in alerted:
-                reason = follow_alerted(p, m)
-                if reason:
-                    logger.info("%s vs %s: %s", p.home, p.away, reason)
-                    closed.add(p.key)
-                continue
-            reason = None
-            if m.status == "FINISHED" or m.goals > 0:
-                reason = f"gol / terminat ({m.home_goals}-{m.away_goals})"
-            elif m.label != FIRST_HALF_LABEL:
-                if m.status == "STARTED":
-                    reason = f"prima repriză s-a terminat ({m.label})"
-            elif m.minute is not None and m.minute >= FH_MINUTE:
-                odds = first_half_over05(m.event_id)
-                if telegram.send(format_alert(p, m, odds)):
-                    state.setdefault("alerts", []).append(
-                        {"key": p.key, "date": p.date, "minute": m.minute, "odds": odds}
-                    )
-                    alerted.add(p.key)
-                    logger.info("%s vs %s: alertă trimisă (minutul %d)", p.home, p.away, m.minute)
+    today = now.date()
+    live = {str(m.event_id): m for m in fetch_matches("active-live", today - dt.timedelta(days=1), today + dt.timedelta(days=2))}
+    for p in watch:
+        m = live.get(p.superbet_id)
+        if m is None:
+            continue
+        if p.key in alerted:
+            reason = follow_alerted(p, m)
             if reason:
                 logger.info("%s vs %s: %s", p.home, p.away, reason)
                 closed.add(p.key)
-        state["closed"] = sorted(closed)
-        save_state(state)
+            continue
+        reason = None
+        if m.status == "FINISHED" or m.goals > 0:
+            reason = f"gol / terminat ({m.home_goals}-{m.away_goals})"
+        elif m.label != FIRST_HALF_LABEL:
+            if m.status == "STARTED":
+                reason = f"prima repriză s-a terminat ({m.label})"
+        elif m.minute is not None and m.minute >= FH_MINUTE:
+            odds = first_half_over05(m.event_id)
+            if telegram.send(format_alert(p, m, odds)):
+                state.setdefault("alerts", []).append(
+                    {"key": p.key, "date": p.date, "minute": m.minute, "odds": odds}
+                )
+                logger.info("%s vs %s: alertă trimisă (minutul %d)", p.home, p.away, m.minute)
+        if reason:
+            logger.info("%s vs %s: %s", p.home, p.away, reason)
+            closed.add(p.key)
+    state["closed"] = sorted(closed)
 
-        if dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=poll_seconds) > deadline:
-            return
-        time.sleep(poll_seconds)
+
+def daily_posts(state: dict, force_morning: bool = False, force_evening: bool = False) -> None:
+    """Postarea de dimineață și bilanțul de seară, o dată pe zi. O încercare
+    eșuată (rețea, Telegram) se reia după RETRY_POSTS, nu la fiecare minut."""
+    now = dt.datetime.now(dt.timezone.utc)
+    local = now.astimezone(RO_TZ)
+    today = local.date().isoformat()
+    posts = os.environ.get("POSTS", "on").lower() != "off"
+    tries = state.setdefault("tries", {})
+    for name, at, run, force in (("morning", POST_MORNING, morning, force_morning),
+                                 ("evening", POST_EVENING, evening, force_evening)):
+        due = posts and local.time() >= at and state.get(name) != today
+        last = tries.get(name, "")
+        if not force and (not due or (last and now - dt.datetime.fromisoformat(last) < RETRY_POSTS)):
+            continue
+        tries[name] = now.isoformat()
+        try:
+            run(now, state)
+        except Exception:
+            logger.exception("Postarea %s a eșuat", name)
+        save_state(state)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Bot Telegram: gol în prima repriză.")
     parser.add_argument("--test-telegram", action="store_true", help="Trimite doar un mesaj de test.")
-    parser.add_argument("--max-minutes", type=float, default=env_float("MAX_MINUTES", 18),
-                        help="Cât timp urmărește meciurile live (minute).")
+    parser.add_argument("--max-minutes", type=float, default=env_float("MAX_MINUTES", 60),
+                        help="Cât durează rularea (minute): postări zilnice și meciuri live, verificate pe minut.")
     parser.add_argument("--morning", action="store_true", help="Forțează postarea de dimineață acum.")
     parser.add_argument("--evening", action="store_true", help="Forțează bilanțul de seară acum.")
     parser.add_argument("--backtest", type=int, metavar="ZILE",
@@ -254,28 +267,22 @@ def main() -> None:
             print(f"P >= {pct}%: {n} meciuri, gol în R1 la {hits} ({hits * 100 / n:.1f}%)" if n else f"P >= {pct}%: 0 meciuri")
         return
 
+    # O rulare durează --max-minutes (60 în workflow) și apoi pornește singură
+    # rularea următoare; în tot timpul ăsta verifică pe minut postările zilnice
+    # și meciurile live.
     state = load_state()
-    now = dt.datetime.now(dt.timezone.utc)
-    local = now.astimezone(RO_TZ)
-    today = local.date().isoformat()
-    posts = os.environ.get("POSTS", "on").lower() != "off"
-
-    if args.morning or (posts and local.time() >= POST_MORNING and state.get("morning") != today):
+    deadline = dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=args.max_minutes)
+    daily_posts(state, args.morning, args.evening)
+    while True:
+        daily_posts(state)
         try:
-            morning(now, state)
+            poll(state, deadline)
         except Exception:
-            logger.exception("Postarea de dimineață a eșuat")
+            logger.exception("Verificarea live a eșuat")
         save_state(state)
-    if args.evening or (posts and local.time() >= POST_EVENING and state.get("evening") != today):
-        try:
-            evening(now, state)
-        except Exception:
-            logger.exception("Bilanțul de seară a eșuat")
-        save_state(state)
-
-    monitor(state, args.max_minutes)
-    save_state(state)
-
+        if dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=POLL_SECONDS) > deadline:
+            break
+        time.sleep(POLL_SECONDS)
 
 if __name__ == "__main__":
     main()
