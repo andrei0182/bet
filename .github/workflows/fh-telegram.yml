@@ -6,12 +6,15 @@ name: Gol în prima repriză (Telegram)
 #   gol în prima repriză (doar cele din oferta Superbet);
 # - după POST_EVENING (o dată pe zi): publică bilanțul zilei;
 # - urmărește live meciurile alese max. MAX_MINUTES minute, cu o verificare
-#   pe minut, și trimite alertă dacă sunt tot 0-0 în minutul FH_MINUTE.
+#   pe minut, și trimite alertă dacă sunt tot 0-0 în minutul FH_MINUTE; după
+#   alertă postează „GOOOOOOL!” la primul gol din prima repriză sau un mesaj
+#   trist dacă pauza vine la 0-0.
 # Secrete necesare: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (aceleași ca în
 # andrei0182/live, ca mesajele să ajungă pe același canal).
 # Variabile opționale (Settings > Secrets and variables > Actions > Variables):
 # FH_MIN_PCT, FH_MAX_PICKS, FH_MINUTE, FH_LAST_N, FH_MIN_MATCHES,
-# POST_MORNING, POST_EVENING (HH:MM), POSTS (off = fără postările zilnice).
+# POST_MORNING, POST_EVENING (HH:MM), POSTS (off = fără postările zilnice),
+# FH_GIF_GOAL, FH_GIF_NO_GOAL (link GIF în loc de emoji-ul animat 🎉 / 😭).
 
 on:
   schedule:
@@ -57,6 +60,8 @@ jobs:
       POST_MORNING: ${{ vars.POST_MORNING || '08:00' }}
       POST_EVENING: ${{ vars.POST_EVENING || '23:30' }}
       POSTS: ${{ vars.POSTS || 'on' }}
+      FH_GIF_GOAL: ${{ vars.FH_GIF_GOAL || '' }}
+      FH_GIF_NO_GOAL: ${{ vars.FH_GIF_NO_GOAL || '' }}
       MAX_MINUTES: ${{ inputs.minutes || '18' }}
     steps:
       - name: Skip if Telegram secrets are missing

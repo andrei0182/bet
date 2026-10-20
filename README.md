@@ -122,6 +122,11 @@ same data is available instantly via a direct HTTP request.
   procentul și cota Superbet „Prima repriză Peste 0.5”, plus rezultatele rămase de ieri;
 - **live**: alertă dacă un meci ales e tot 0-0 în minutul `FH_MINUTE` (implicit 20)
   al primei reprize, cu cota live „Prima repriză Peste 0.5” și linkul spre meci;
+- **după alertă**: meciul e urmărit până la pauză. La primul gol din prima repriză
+  vine „⚽⚽⚽ GOOOOOOOL!” cu scorul și minutul, urmat de 🎉; dacă pauza vine la 0-0,
+  „😞 Fără gol în prima repriză”, urmat de 😭. Un emoji trimis singur apare în Telegram
+  mare și animat. Pentru un GIF anume, pune linkul lui în variabilele `FH_GIF_GOAL` /
+  `FH_GIF_NO_GOAL` (GIF-ul vine atunci cu textul ca descriere);
 - **seara** (`POST_EVENING`, implicit 23:30): rezultatul fiecărui pronostic (scorul la
   pauză), procentul zilei, alertele și procentul total.
 
@@ -153,7 +158,8 @@ Pronosticurile și rezultatele se păstrează în `data/fh_picks.csv` (comis de 
    Secrets and variables → Actions*, adaugă aceleași secrete `TELEGRAM_BOT_TOKEN`
    și `TELEGRAM_CHAT_ID`.
 2. Opțional, variabile: `FH_MIN_PCT`, `FH_MAX_PICKS`, `FH_MINUTE`, `FH_LAST_N`,
-   `FH_MIN_MATCHES`, `POST_MORNING`, `POST_EVENING`, `POSTS` (`off` oprește postările).
+   `FH_MIN_MATCHES`, `POST_MORNING`, `POST_EVENING`, `POSTS` (`off` oprește postările),
+   `FH_GIF_GOAL`, `FH_GIF_NO_GOAL`.
 3. *Actions → Gol în prima repriză (Telegram) → Run workflow* cu „Trimite doar un
    mesaj de test” bifat, apoi cu „Forțează o postare acum” = `dimineata`.
 

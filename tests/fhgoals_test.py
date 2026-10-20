@@ -160,3 +160,47 @@ def test_messages():
     text = format_evening(dt.date(2026, 10, 20), [p, _pick(match_id="x", result=NO_GOAL)], [p],
                           [{"key": p.key, "date": p.date}])
     assert "✅ A vs B 1-0 la pauză (84%)" in text and "Azi: 1/2 (50%)" in text and "Alerte" in text
+
+
+def test_first_half_score_from_periods():
+    event = {
+        "event_id": 7,
+        "fixture": {"event_name": "Al Draih·Al Riyadh", "utc_date": "2026-10-20T15:00:00Z"},
+        "inplay_stats": {"home_team_score": "2", "away_team_score": "0", "minutes": "50",
+                         "periods": [{"home_team_score": "1", "away_team_score": "0", "num": 1}]},
+        "inplay_stats_metadata": {"status": "STARTED", "event_status_label": "2H"},
+    }
+    m = parse_event(event)
+    assert m.first_half_score() == (1, 0)  # golul din a doua repriză nu contează
+    assert SbMatch(1, "A", "B", None, "STARTED", "1H", 30, 0, 1).first_half_score() == (0, 1)
+    assert SbMatch(1, "A", "B", None, "STARTED", "2H", 50, 1, 0).first_half_score() is None
+
+
+def test_follow_alerted(monkeypatch):
+    import fh_bot
+
+    sent = []
+    monkeypatch.setattr(fh_bot.telegram, "send", lambda text: sent.append(text) or True)
+    monkeypatch.setattr(fh_bot.telegram, "send_animation", lambda url, caption: sent.append((url, caption)) or True)
+    monkeypatch.setattr(fh_bot, "GIF_GOAL", "")
+    p = _pick()
+
+    # încă 0-0 în prima repriză: nimic
+    assert fh_bot.follow_alerted(p, SbMatch(1, "A", "B", None, "STARTED", "1H", 30)) is None and not sent
+
+    # gol în minutul 38 -> GOOOOOOL + 🎉
+    goal = SbMatch(1, "A", "B", None, "STARTED", "1H", 38, 1, 0)
+    assert fh_bot.follow_alerted(p, goal) == "gol în prima repriză (1-0)"
+    assert "GOOOO" in sent[0] and "A 1-0 B, minutul 38" in sent[0] and sent[1] == "🎉"
+
+    # pauză 0-0 -> mesaj trist + 😭
+    sent.clear()
+    ht = SbMatch(1, "A", "B", None, "STARTED", "HT", 45, 0, 0, 0, 0)
+    assert fh_bot.follow_alerted(p, ht) == "pauză 0-0"
+    assert "Fără gol" in sent[0] and sent[1] == "😭"
+
+    # cu GIF setat: un singur mesaj, GIF-ul cu text
+    sent.clear()
+    monkeypatch.setattr(fh_bot, "GIF_GOAL", "https://example.com/gol.gif")
+    assert fh_bot.follow_alerted(p, goal)
+    assert sent == [("https://example.com/gol.gif", sent[0][1])] and "GOOOO" in sent[0][1]

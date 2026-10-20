@@ -166,3 +166,22 @@ def format_alert(p: Pick, sb: SbMatch, odds_live: Optional[float]) -> str:
         + (f" (pre-meci {p.odds_fh05})" if p.odds_fh05 else ""),
         f"🌐 {sb.url}",
     ])
+
+
+def format_goal(p: Pick, sb: SbMatch, fh: tuple[int, int]) -> str:
+    minute = f", minutul {sb.minute}" if sb.minute is not None and sb.label == "1H" else ""
+    return "\n".join([
+        "⚽⚽⚽ GOOOOOOOL! ⚽⚽⚽",
+        f"{sb.home} {fh[0]}-{fh[1]} {sb.away}{minute}",
+        p.league,
+        "Prima repriză Peste 0.5 a intrat ✅",
+    ])
+
+
+def format_no_goal(p: Pick, sb: SbMatch) -> str:
+    return "\n".join([
+        "😞 Fără gol în prima repriză",
+        f"{sb.home} 0-0 {sb.away} la pauză",
+        p.league,
+        "Prima repriză Peste 0.5 n-a intrat ❌",
+    ])
