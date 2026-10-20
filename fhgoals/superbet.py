@@ -69,6 +69,13 @@ class SbMatch:
     def goals(self) -> int:
         return self.home_goals + self.away_goals
 
+    @property
+    def first_half_over(self) -> bool:
+        """Prima repriză s-a terminat. CONFIRMAT (2026-10-20, PSG–Barcelona): în
+        primul minut după start meciul e deja "STARTED", dar fără
+        `event_status_label` -- asta nu înseamnă că s-a trecut de prima repriză."""
+        return self.status == "FINISHED" or (self.status == "STARTED" and self.label not in ("", FIRST_HALF_LABEL))
+
     def first_half_score(self) -> Optional[tuple[int, int]]:
         """Scorul primei reprize: din `periods` dacă există, altfel scorul
         curent cât timp meciul e încă în prima repriză."""

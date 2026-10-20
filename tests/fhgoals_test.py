@@ -2,6 +2,8 @@
 (Fișierul nu se numește test_*.py: .gitignore exclude acel tipar.)"""
 import datetime as dt
 
+import pytest
+
 from fhgoals.history import Fixture, parse_day_page, server_offset
 from fhgoals.model import TeamForm, TeamIndex, fh_probability, predict
 from fhgoals.picks import GOAL, NO_GOAL, PENDING, VOID, Pick, load_picks, save_picks
@@ -204,3 +206,19 @@ def test_follow_alerted(monkeypatch):
     monkeypatch.setattr(fh_bot, "GIF_GOAL", "https://example.com/gol.gif")
     assert fh_bot.follow_alerted(p, goal)
     assert sent == [("https://example.com/gol.gif", sent[0][1])] and "GOOOO" in sent[0][1]
+
+
+def test_first_half_over_ignores_empty_label_at_kickoff():
+    # CONFIRMAT 2026-10-20 (PSG–Barcelona): la start, "STARTED" fără event_status_label
+    assert not SbMatch(1, "A", "B", None, "STARTED", "", 0).first_half_over
+    assert not SbMatch(1, "A", "B", None, "STARTED", "1H", 30).first_half_over
+    assert SbMatch(1, "A", "B", None, "STARTED", "HT", 45).first_half_over
+    assert SbMatch(1, "A", "B", None, "FINISHED", "END", None).first_half_over
+    assert not SbMatch(1, "A", "B", None, "", "", None).first_half_over  # pre-meci
+
+
+def test_follow_alerted_waits_on_empty_label(monkeypatch):
+    import fh_bot
+
+    monkeypatch.setattr(fh_bot.telegram, "send", lambda text: pytest.fail("nu trebuia trimis nimic"))
+    assert fh_bot.follow_alerted(_pick(), SbMatch(1, "A", "B", None, "STARTED", "", 20)) is None
