@@ -12,3 +12,6 @@ run_log*.txt
 run_final*.txt
 odds_curl.json
 run_*.txt
+
+# Botul „gol în prima repriză”: istoricul și starea stau în cache-ul Actions
+state/

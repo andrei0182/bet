@@ -111,3 +111,61 @@ version routed every per-match lookup through a real browser page load,
 which was both far slower and, for the hit-rate stats specifically,
 unreliably slow to render in a scripted Chrome session even though the
 same data is available instantly via a direct HTTP request.
+
+## Bot Telegram: gol în prima repriză
+
+`fh_bot.py` (pachetul `fhgoals/`) publică pe canalul de Telegram:
+
+- **dimineața** (`POST_MORNING`, implicit 08:00, ora României): meciurile zilei
+  cu cea mai mare șansă de gol în prima repriză (cel mult `FH_MAX_PICKS`, implicit 10,
+  doar peste `FH_MIN_PCT`, implicit 80%, și doar cele din oferta Superbet), cu
+  procentul și cota Superbet „Prima repriză Peste 0.5”, plus rezultatele rămase de ieri;
+- **live**: alertă dacă un meci ales e tot 0-0 în minutul `FH_MINUTE` (implicit 20)
+  al primei reprize, cu cota live „Prima repriză Peste 0.5” și linkul spre meci;
+- **seara** (`POST_EVENING`, implicit 23:30): rezultatul fiecărui pronostic (scorul la
+  pauză), procentul zilei, alertele și procentul total.
+
+### Cum se calculează procentul
+
+Istoricul vine din paginile zilnice de rezultate BetExplorer (cu scorul la pauză),
+ultimele 60 de zile, citite cu `requests` (fără Selenium). Pentru fiecare echipă se
+iau ultimele `FH_LAST_N` (10) meciuri, fără amicale, și minimum `FH_MIN_MATCHES` (5):
+
+- cât la sută din meciurile ei au avut gol în prima repriză;
+- media golurilor marcate / primite în prima repriză (Poisson);
+- rata de gol în prima repriză a ligii (ultimele 60 de meciuri din ligă).
+
+Backtest pe 21 de zile (8213 meciuri, `python fh_bot.py --backtest 21`):
+
+| Prag | Meciuri | Gol în R1 |
+|---|---|---|
+| media generală | 11413 | 73% |
+| P >= 75% | 3661 | 78% |
+| P >= 80% | 1872 | 80% |
+| P >= 85% | 597 | 82% |
+| P >= 90% | 66 | 85% |
+
+Pronosticurile și rezultatele se păstrează în `data/fh_picks.csv` (comis de workflow).
+
+### Configurare
+
+1. Folosește botul și canalul din `andrei0182/live`: în acest repo, *Settings →
+   Secrets and variables → Actions*, adaugă aceleași secrete `TELEGRAM_BOT_TOKEN`
+   și `TELEGRAM_CHAT_ID`.
+2. Opțional, variabile: `FH_MIN_PCT`, `FH_MAX_PICKS`, `FH_MINUTE`, `FH_LAST_N`,
+   `FH_MIN_MATCHES`, `POST_MORNING`, `POST_EVENING`, `POSTS` (`off` oprește postările).
+3. *Actions → Gol în prima repriză (Telegram) → Run workflow* cu „Trimite doar un
+   mesaj de test” bifat, apoi cu „Forțează o postare acum” = `dimineata`.
+
+Workflow-ul (`.github/workflows/fh-telegram.yml`) pornește la fiecare 20 de minute
+(minutele 2, 22, 42) și urmărește meciurile cel mult 18 minute, cu o verificare pe minut.
+Prima rulare descarcă istoricul pe 60 de zile (câteva minute); apoi îl ține în cache.
+
+Local:
+
+```bash
+pip install requests pytest
+pytest tests/
+TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... python fh_bot.py --test-telegram
+TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... python fh_bot.py --morning --max-minutes 0
+```

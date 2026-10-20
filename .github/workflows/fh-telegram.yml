@@ -1,0 +1,120 @@
+name: Gol în prima repriză (Telegram)
+
+# La fiecare 20 de minute rulează fh_bot.py:
+# - după POST_MORNING (ora României, o dată pe zi): actualizează istoricul
+#   BetExplorer și publică pe canal meciurile zilei cu cea mai mare șansă de
+#   gol în prima repriză (doar cele din oferta Superbet);
+# - după POST_EVENING (o dată pe zi): publică bilanțul zilei;
+# - urmărește live meciurile alese max. MAX_MINUTES minute, cu o verificare
+#   pe minut, și trimite alertă dacă sunt tot 0-0 în minutul FH_MINUTE.
+# Secrete necesare: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (aceleași ca în
+# andrei0182/live, ca mesajele să ajungă pe același canal).
+# Variabile opționale (Settings > Secrets and variables > Actions > Variables):
+# FH_MIN_PCT, FH_MAX_PICKS, FH_MINUTE, FH_LAST_N, FH_MIN_MATCHES,
+# POST_MORNING, POST_EVENING (HH:MM), POSTS (off = fără postările zilnice).
+
+on:
+  schedule:
+    - cron: "2,22,42 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_telegram:
+        description: "Trimite doar un mesaj de test pe Telegram"
+        type: boolean
+        default: false
+      post:
+        description: "Forțează o postare acum"
+        type: choice
+        options: ["nimic", "dimineata", "seara"]
+        default: "nimic"
+      minutes:
+        description: "Cât timp urmărește meciurile (minute)"
+        type: choice
+        options: ["18", "60", "120", "180"]
+        default: "18"
+
+concurrency:
+  group: fh-bot
+  cancel-in-progress: false
+
+permissions:
+  contents: write  # comite data/fh_picks.csv
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    # Acoperă cea mai lungă rulare manuală (180 de minute) plus istoricul;
+    # rulările programate se opresc singure după MAX_MINUTES.
+    timeout-minutes: 210
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      FH_MIN_PCT: ${{ vars.FH_MIN_PCT || '80' }}
+      FH_MAX_PICKS: ${{ vars.FH_MAX_PICKS || '10' }}
+      FH_MINUTE: ${{ vars.FH_MINUTE || '20' }}
+      FH_LAST_N: ${{ vars.FH_LAST_N || '10' }}
+      FH_MIN_MATCHES: ${{ vars.FH_MIN_MATCHES || '5' }}
+      POST_MORNING: ${{ vars.POST_MORNING || '08:00' }}
+      POST_EVENING: ${{ vars.POST_EVENING || '23:30' }}
+      POSTS: ${{ vars.POSTS || 'on' }}
+      MAX_MINUTES: ${{ inputs.minutes || '18' }}
+    steps:
+      - name: Skip if Telegram secrets are missing
+        if: env.TELEGRAM_BOT_TOKEN == '' || env.TELEGRAM_CHAT_ID == ''
+        run: echo "::notice::TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID lipsesc -- adaugă-le în Settings > Secrets and variables > Actions."
+
+      - uses: actions/checkout@v4
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+
+      - uses: actions/setup-python@v5
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != ''
+        run: pip install "requests>=2.31"
+
+      - name: Test Telegram
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && inputs.test_telegram
+        run: python fh_bot.py --test-telegram
+
+      # Istoricul BetExplorer, postările făcute și alertele trimise trec de la
+      # o rulare la alta prin cache.
+      - name: Restore state
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && !inputs.test_telegram
+        uses: actions/cache/restore@v4
+        with:
+          path: state
+          key: fh-state-${{ github.run_id }}
+          restore-keys: fh-state-
+
+      - name: Run bot
+        if: env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && !inputs.test_telegram
+        run: |
+          case "${{ inputs.post }}" in
+            dimineata) python fh_bot.py --morning ;;
+            seara) python fh_bot.py --evening ;;
+            *) python fh_bot.py ;;
+          esac
+
+      - name: Save state
+        if: always() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && !inputs.test_telegram && hashFiles('state/fh_state.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: state
+          key: fh-state-${{ github.run_id }}
+
+      - name: Commit picks log
+        if: always() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && !inputs.test_telegram && hashFiles('data/fh_picks.csv') != ''
+        run: |
+          git add data/fh_picks.csv
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update first-half picks log ($(TZ=Europe/Bucharest date +%F))"
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep 5
+          done
+          exit 1
