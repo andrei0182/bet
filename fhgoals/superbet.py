@@ -190,6 +190,8 @@ _STOPWORDS = {
 }
 _YOUTH = re.compile(r"^u(1[5-9]|2[0-3])$")
 _WOMEN = {"f", "w", "women", "fem", "feminin"}
+# echipe secunde: "Defensa y Justicia (R)", "Suduva B", "Jong Ajax II"
+_RESERVES = {"r", "res", "reserve", "reserves", "b", "ii"}
 
 
 def _words(name: str) -> list[str]:
@@ -201,9 +203,11 @@ def _tokens(name: str) -> set[str]:
     return {t for t in _words(name) if len(t) >= 3 and t not in _STOPWORDS and not _YOUTH.match(t)}
 
 
-def _category(name: str) -> tuple[frozenset, bool]:
+def _category(name: str) -> tuple[frozenset, bool, bool]:
+    """(vârstele de juniori, echipă de fete, echipă secundă) -- trebuie să coincidă."""
     words = _words(name)
-    return frozenset(w for w in words if _YOUTH.match(w)), any(w in _WOMEN for w in words)
+    return (frozenset(w for w in words if _YOUTH.match(w)), any(w in _WOMEN for w in words),
+            any(w in _RESERVES for w in words))
 
 
 def team_score(name: str, sb_name: str) -> float:
