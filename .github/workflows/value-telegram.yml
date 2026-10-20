@@ -1,6 +1,9 @@
 name: Pariuri cu valoare (Telegram)
 
-# La fiecare 30 de minute rulează value_bot.py: compară cotele Superbet cu
+# Rulează value_bot.py continuu, în rulări de câte o oră care o pornesc singure
+# pe următoarea (la fel ca fh-telegram.yml; cron-ul orar doar repornește
+# lanțul dacă s-a rupt, CHAIN=off îl oprește). La VAL_INTERVAL_MIN minute
+# (implicit 30) compară cotele Superbet cu
 # cotele corecte Pinnacle (fără marjă) pentru meciurile din următoarele
 # VAL_WINDOW_H ore, postează pariurile noi cu avantaj >= VAL_MIN_EDGE %,
 # închide pariurile terminate și, după POST_EVENING, publică bilanțul zilei.
@@ -10,7 +13,7 @@ name: Pariuri cu valoare (Telegram)
 
 on:
   schedule:
-    - cron: "12,42 * * * *"
+    - cron: "32 * * * *"
   workflow_dispatch:
     inputs:
       evening:
@@ -24,11 +27,12 @@ concurrency:
 
 permissions:
   contents: write  # comite data/value_bets.csv
+  actions: write  # pornește rularea următoare
 
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 80
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -38,6 +42,8 @@ jobs:
       VAL_MIN_LIMIT: ${{ vars.VAL_MIN_LIMIT || '250' }}
       VAL_WINDOW_H: ${{ vars.VAL_WINDOW_H || '12' }}
       VAL_MAX_POST: ${{ vars.VAL_MAX_POST || '10' }}
+      VAL_INTERVAL_MIN: ${{ vars.VAL_INTERVAL_MIN || '30' }}
+      MAX_MINUTES: "60"
       POST_EVENING: ${{ vars.POST_EVENING || '23:30' }}
       POSTS: ${{ vars.POSTS || 'on' }}
     steps:
@@ -90,3 +96,9 @@ jobs:
             sleep 5
           done
           exit 1
+
+      - name: Start next run
+        if: always() && env.TELEGRAM_BOT_TOKEN != '' && env.TELEGRAM_CHAT_ID != '' && vars.CHAIN != 'off'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run value-telegram.yml --ref "${GITHUB_REF_NAME}"

@@ -163,9 +163,14 @@ Pronosticurile și rezultatele se păstrează în `data/fh_picks.csv` (comis de 
 3. *Actions → Gol în prima repriză (Telegram) → Run workflow* cu „Trimite doar un
    mesaj de test” bifat, apoi cu „Forțează o postare acum” = `dimineata`.
 
-Workflow-ul (`.github/workflows/fh-telegram.yml`) pornește la fiecare 20 de minute
-(minutele 2, 22, 42) și urmărește meciurile cel mult 18 minute, cu o verificare pe minut.
-Prima rulare descarcă istoricul pe 60 de zile (câteva minute); apoi îl ține în cache.
+Workflow-ul (`.github/workflows/fh-telegram.yml`) rulează continuu, în rulări de câte o
+oră: în fiecare minut verifică postările zilnice și meciurile live, iar la final pornește
+singur rularea următoare. Cron-ul GitHub nu e de încredere pentru verificări dese (în
+`andrei0182/live`, cron-ul de 20 de minute a pornit în realitate la ~5 ore), așa că
+cron-ul orar din workflow doar repornește lanțul dacă s-a rupt. Variabila `CHAIN=off`
+oprește lanțul la finalul rulării curente; *Actions → workflow → Disable workflow* îl
+oprește imediat. Prima rulare descarcă istoricul pe 60 de zile (câteva minute); apoi îl
+ține în cache.
 
 Local:
 
@@ -206,5 +211,5 @@ vine bilanțul cu profitul în unități (miză 1), ROI și **CLV** (cota luată
 cota corectă de la start). Un CLV pozitiv constant e semnul că avantajul e real;
 profitul se vede abia după sute de pariuri.
 
-Workflow-ul `.github/workflows/value-telegram.yml` rulează la minutele 12 și 42 ale
-fiecărei ore, cu aceleași secrete Telegram. Local: `python value_bot.py --dry-run`.
+Workflow-ul `.github/workflows/value-telegram.yml` rulează la fel, continuu în rulări de
+câte o oră, cu o scanare la `VAL_INTERVAL_MIN` (30) minute și aceleași secrete Telegram. Local: `python value_bot.py --dry-run`.

@@ -1,6 +1,8 @@
 """Scannerul de valoare: pariuri unde Superbet plătește peste cota corectă.
 
-La fiecare rulare (workflow-ul o pornește la 30 de minute):
+Rulează continuu, în rulări de câte o oră care o pornesc singure pe
+următoarea (workflow-ul value-telegram.yml); la fiecare VAL_INTERVAL_MIN
+minute (implicit 30):
 1. închide pariurile terminate, din scorul final Superbet (indexul `live`
    păstrează meciurile terminate, cu scorul la pauză în `periods`);
 2. citește cotele Pinnacle, scoate marja și le compară cu Superbet pentru
@@ -8,7 +10,8 @@ La fiecare rulare (workflow-ul o pornește la 30 de minute):
    avantaj >= VAL_MIN_EDGE se postează pe Telegram;
 3. pentru pariurile încă neîncepute actualizează cota corectă Pinnacle
    (ultima valoare dinainte de start = cota de închidere, pentru CLV);
-4. seara, după POST_EVENING (o dată pe zi): bilanțul zilei și totalul.
+4. seara, după POST_EVENING (o dată pe zi, verificat pe minut): bilanțul
+   zilei și totalul.
 
 Pariurile se salvează în data/value_bets.csv (îl comite workflow-ul).
 """
@@ -19,6 +22,7 @@ import datetime as dt
 import json
 import logging
 import os
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 from fhgoals import telegram
@@ -56,6 +60,7 @@ MAX_FAIR = env_float("VAL_MAX_FAIR", 4.0)
 MIN_LIMIT = env_float("VAL_MIN_LIMIT", 250)  # miza maximă Pinnacle: piețele mici sunt mai puțin sigure
 WINDOW_H = env_float("VAL_WINDOW_H", 12)
 MAX_POST = int(env_float("VAL_MAX_POST", 10))
+INTERVAL_MIN = env_float("VAL_INTERVAL_MIN", 30)
 try:
     POST_EVENING = dt.time.fromisoformat(os.environ.get("POST_EVENING") or "23:30")
 except ValueError:
@@ -126,36 +131,51 @@ def scan(bets, now: dt.datetime, dry_run: bool) -> list:
     return new
 
 
+def evening_post(state: dict, bets, force: bool, dry_run: bool) -> None:
+    local = dt.datetime.now(dt.timezone.utc).astimezone(RO_TZ)
+    today = local.date()
+    posts = os.environ.get("POSTS", "on").lower() != "off"
+    if not (force or (posts and local.time() >= POST_EVENING and state.get("evening") != today.isoformat())):
+        return
+    text = format_evening(today, [b for b in bets if b.date == today.isoformat()], bets)
+    if dry_run:
+        print(text)
+    elif telegram.send(text):
+        state["evening"] = today.isoformat()
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
     parser = argparse.ArgumentParser(description="Scanner de valoare Superbet vs Pinnacle.")
-    parser.add_argument("--dry-run", action="store_true", help="Afișează mesajele, nu trimite și nu salvează.")
+    parser.add_argument("--dry-run", action="store_true", help="O singură scanare; afișează mesajele, nu trimite și nu salvează.")
     parser.add_argument("--evening", action="store_true", help="Forțează bilanțul de seară acum.")
+    parser.add_argument("--max-minutes", type=float, default=env_float("MAX_MINUTES", 0),
+                        help="Cât durează rularea: scanare la VAL_INTERVAL_MIN minute (0 = o singură scanare).")
     args = parser.parse_args()
 
-    now = dt.datetime.now(dt.timezone.utc)
-    local = now.astimezone(RO_TZ)
     state = load_state()
     bets = load_bets(BETS_PATH)
-
-    closed = settle_pending(bets, now)
-    logger.info("%d pariuri închise", closed)
-    bets += scan(bets, now, args.dry_run)
-
-    today = local.date()
-    posts = os.environ.get("POSTS", "on").lower() != "off"
-    if args.evening or (posts and local.time() >= POST_EVENING and state.get("evening") != today.isoformat()):
-        day_bets = [b for b in bets if b.date == today.isoformat()]
-        text = format_evening(today, day_bets, bets)
-        if args.dry_run:
-            print(text)
-        elif telegram.send(text):
-            state["evening"] = today.isoformat()
-
-    if not args.dry_run:
-        save_bets(BETS_PATH, bets)
-        save_state(state)
-
+    deadline = dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=args.max_minutes)
+    next_scan = dt.datetime.now(dt.timezone.utc)
+    force_evening = args.evening
+    while True:
+        now = dt.datetime.now(dt.timezone.utc)
+        if now >= next_scan:
+            try:
+                logger.info("%d pariuri închise", settle_pending(bets, now))
+                bets += scan(bets, now, args.dry_run)
+            except Exception:
+                logger.exception("Scanarea a eșuat")
+            next_scan = now + dt.timedelta(minutes=INTERVAL_MIN)
+            if not args.dry_run:
+                save_bets(BETS_PATH, bets)
+        evening_post(state, bets, force_evening, args.dry_run)
+        force_evening = False
+        if not args.dry_run:
+            save_state(state)
+        if args.dry_run or dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=60) > deadline:
+            break
+        time.sleep(60)
 
 if __name__ == "__main__":
     main()
