@@ -6,7 +6,8 @@ CONFIRMAT (2026-10-20) via curl, același API ca în `andrei0182/live`:
   = ora de start UTC, `fixture.event_name` = "Gazde·Oaspeți";
 - live: `inplay_stats.home_team_score` / `away_team_score` = golurile,
   `inplay_stats.minutes` = minutul, `inplay_stats_metadata.event_status_label`
-  = "1H" în prima repriză;
+  = "1H" în prima repriză, "HT" la pauză, "2H" în a doua;
+  `inplay_stats.periods[]` = scorul pe reprize (`num` 1 = prima repriză);
 - piețele extinse vin prin endpoint-ul SSE `v3/subscription/ro-RO/events`;
   "Prima repriză - Total goluri" (id 200735) are "Sub/Peste 0.5" etc., atât
   pre-meci cât și live.
@@ -56,6 +57,9 @@ class SbMatch:
     minute: Optional[int] = None
     home_goals: int = 0
     away_goals: int = 0
+    # scorul primei reprize din `periods` (None dacă lipsește)
+    fh_home: Optional[int] = None
+    fh_away: Optional[int] = None
 
     @property
     def url(self) -> str:
@@ -64,6 +68,15 @@ class SbMatch:
     @property
     def goals(self) -> int:
         return self.home_goals + self.away_goals
+
+    def first_half_score(self) -> Optional[tuple[int, int]]:
+        """Scorul primei reprize: din `periods` dacă există, altfel scorul
+        curent cât timp meciul e încă în prima repriză."""
+        if self.fh_home is not None and self.fh_away is not None:
+            return self.fh_home, self.fh_away
+        if self.label == FIRST_HALF_LABEL:
+            return self.home_goals, self.away_goals
+        return None
 
 
 def _int(value) -> Optional[int]:
@@ -83,6 +96,7 @@ def parse_event(event: dict) -> SbMatch:
     home, _, away = fixture.get("event_name", "").partition("·")
     stats = event.get("inplay_stats") or {}
     meta = event.get("inplay_stats_metadata") or {}
+    first = next((p for p in stats.get("periods") or [] if str(p.get("num")) == "1"), None) or {}
     return SbMatch(
         event_id=event.get("event_id"),
         home=home.strip(),
@@ -93,6 +107,8 @@ def parse_event(event: dict) -> SbMatch:
         minute=_int(stats.get("minutes")),
         home_goals=_int(stats.get("home_team_score")) or 0,
         away_goals=_int(stats.get("away_team_score")) or 0,
+        fh_home=_int(first.get("home_team_score")),
+        fh_away=_int(first.get("away_team_score")),
     )
 
 

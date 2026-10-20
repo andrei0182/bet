@@ -6,7 +6,10 @@ La fiecare rulare (workflow-ul o pornește la 20 de minute):
    repriză (doar cele din oferta Superbet) și le publică pe canal;
 2. seara, după POST_EVENING (o dată pe zi): publică rezultatele zilei;
 3. urmărește live meciurile alese și trimite alertă dacă sunt tot 0-0 în
-   minutul FH_MINUTE (implicit 20) al primei reprize.
+   minutul FH_MINUTE (implicit 20) al primei reprize; după alertă urmărește
+   meciul până la pauză și postează „GOOOOOOL!” + 🎉 la primul gol din prima
+   repriză sau „Fără gol” + 😭 dacă pauza vine la 0-0 (cu GIF-urile din
+   FH_GIF_GOAL / FH_GIF_NO_GOAL în loc de emoji, dacă sunt setate).
 
 Pronosticurile se salvează în data/fh_picks.csv (îl comite workflow-ul),
 istoricul și starea alertelor în state/ (cache-ul GitHub Actions).
@@ -28,7 +31,9 @@ from fhgoals.report import (
     check_results,
     format_alert,
     format_evening,
+    format_goal,
     format_morning,
+    format_no_goal,
     select_picks,
     to_pick,
 )
@@ -46,6 +51,8 @@ HISTORY_PATH = os.path.join(STATE_DIR, "fh_history.csv")
 STATE_PATH = os.path.join(STATE_DIR, "fh_state.json")
 # Prima repriză durează ~50 de minute cu prelungirile.
 FIRST_HALF_WINDOW = dt.timedelta(minutes=55)
+# După alertă meciul se urmărește până la pauză, cu marjă pentru start întârziat.
+ALERTED_WINDOW = dt.timedelta(minutes=80)
 
 
 def env_float(name: str, default: float) -> float:
@@ -70,6 +77,36 @@ MIN_MATCHES = int(env_float("FH_MIN_MATCHES", 5))
 HISTORY_DAYS = int(env_float("FH_HISTORY_DAYS", 60))
 POST_MORNING = env_time("POST_MORNING", "08:00")
 POST_EVENING = env_time("POST_EVENING", "23:30")
+GIF_GOAL = os.environ.get("FH_GIF_GOAL", "")
+GIF_NO_GOAL = os.environ.get("FH_GIF_NO_GOAL", "")
+
+
+def celebrate(text: str, gif: str, emoji: str) -> bool:
+    """Mesajul de după alertă: GIF-ul cu textul ca descriere dacă e setat,
+    altfel textul urmat de un emoji singur (Telegram îl animă)."""
+    if gif and telegram.send_animation(gif, text):
+        return True
+    if not telegram.send(text):
+        return False
+    telegram.send(emoji)
+    return True
+
+
+def follow_alerted(p, m) -> str | None:
+    """Meci deja alertat (0-0 la minut): postează la primul gol din prima
+    repriză sau la pauză fără gol. Întoarce motivul închiderii sau None."""
+    fh = m.first_half_score()
+    if fh is not None and sum(fh) > 0:
+        if celebrate(format_goal(p, m, fh), GIF_GOAL, "🎉"):
+            return f"gol în prima repriză ({fh[0]}-{fh[1]})"
+        return None
+    if m.status == "FINISHED" or (m.status == "STARTED" and m.label != FIRST_HALF_LABEL):
+        if fh is None:
+            return f"prima repriză s-a terminat, scor necunoscut ({m.label})"
+        if celebrate(format_no_goal(p, m), GIF_NO_GOAL, "😭"):
+            return "pauză 0-0"
+        return None
+    return None
 
 
 def load_state() -> dict:
@@ -141,12 +178,14 @@ def monitor(state: dict, max_minutes: float, poll_seconds: int = 60) -> None:
 
     while True:
         now = dt.datetime.now(dt.timezone.utc)
+        alerted = {a.get("key") for a in state.get("alerts", [])}
         watch = []
         for p in picks:
             kickoff = p.kickoff_utc()
             if p.key in closed or kickoff is None:
                 continue
-            if kickoff <= deadline and now <= kickoff + FIRST_HALF_WINDOW:
+            window = ALERTED_WINDOW if p.key in alerted else FIRST_HALF_WINDOW
+            if kickoff <= deadline and now <= kickoff + window:
                 watch.append(p)
         if not watch:
             logger.info("Niciun meci de urmărit acum.")
@@ -157,6 +196,12 @@ def monitor(state: dict, max_minutes: float, poll_seconds: int = 60) -> None:
         for p in watch:
             m = live.get(p.superbet_id)
             if m is None:
+                continue
+            if p.key in alerted:
+                reason = follow_alerted(p, m)
+                if reason:
+                    logger.info("%s vs %s: %s", p.home, p.away, reason)
+                    closed.add(p.key)
                 continue
             reason = None
             if m.status == "FINISHED" or m.goals > 0:
@@ -170,7 +215,8 @@ def monitor(state: dict, max_minutes: float, poll_seconds: int = 60) -> None:
                     state.setdefault("alerts", []).append(
                         {"key": p.key, "date": p.date, "minute": m.minute, "odds": odds}
                     )
-                    reason = f"alertă trimisă (minutul {m.minute})"
+                    alerted.add(p.key)
+                    logger.info("%s vs %s: alertă trimisă (minutul %d)", p.home, p.away, m.minute)
             if reason:
                 logger.info("%s vs %s: %s", p.home, p.away, reason)
                 closed.add(p.key)
