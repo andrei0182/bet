@@ -103,7 +103,7 @@ def follow_alerted(p, m) -> str | None:
         if celebrate(format_goal(p, m, fh), GIF_GOAL, "🎉"):
             return f"gol în prima repriză ({fh[0]}-{fh[1]})"
         return None
-    if m.status == "FINISHED" or (m.status == "STARTED" and m.label != FIRST_HALF_LABEL):
+    if m.first_half_over:
         if fh is None:
             return f"prima repriză s-a terminat, scor necunoscut ({m.label})"
         if celebrate(format_no_goal(p, m), GIF_NO_GOAL, "😭"):
@@ -203,10 +203,9 @@ def poll(state: dict, deadline: dt.datetime) -> None:
         reason = None
         if m.status == "FINISHED" or m.goals > 0:
             reason = f"gol / terminat ({m.home_goals}-{m.away_goals})"
-        elif m.label != FIRST_HALF_LABEL:
-            if m.status == "STARTED":
-                reason = f"prima repriză s-a terminat ({m.label})"
-        elif m.minute is not None and m.minute >= FH_MINUTE:
+        elif m.first_half_over:
+            reason = f"prima repriză s-a terminat ({m.label})"
+        elif m.label == FIRST_HALF_LABEL and m.minute is not None and m.minute >= FH_MINUTE:
             odds = first_half_over05(m.event_id)
             if telegram.send(format_alert(p, m, odds)):
                 state.setdefault("alerts", []).append(
