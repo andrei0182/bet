@@ -7,13 +7,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-20,21:45,England: Southern League Premier Central,Rushall,Leamington,83.4,10,10,61tk0LLa,15308122,1.26,goal,2-1,2026-10-21
 2026-10-20,21:45,England: Isthmian League Premier Division,Wingate & Finchley,Carshalton,81.2,10,10,IDozl3E4,15308150,,goal,2-1,2026-10-21
 2026-10-20,22:00,Europe: Champions League,PSG,Barcelona,82.3,9,10,6u963YJ6,14738978,1.13,goal,1-0,2026-10-21
-2026-10-21,13:00,Romania: Superliga Women,Csikszereda M. Ciuc W,Gloria Bistrita W,86.0,9,7,SnJZAQeK,15323484,,pending,,
-2026-10-21,15:00,England: Professional Development League,Peterborough U21,Sheffield Wed U21,85.9,7,7,fVY62oSb,15323503,,pending,,
-2026-10-21,17:00,Norway: Division 3 - Group 2,Aalesund 2,Nardo,89.3,7,7,SIpOY4un,15323578,,pending,,
-2026-10-21,18:30,Poland: III Liga - Group I,Widzew Lodz II,Warta Sieradz,81.8,9,8,MuZEm6eJ,14950297,1.27,pending,,
-2026-10-21,20:00,Norway: OBOS-ligaen,Sogndal,Raufoss,83.5,8,10,zedJTiaC,15096821,1.17,pending,,
-2026-10-21,21:00,England: Premier League Cup,Norwich U21,Bristol City U21,85.1,8,8,OUCHBiYr,15323778,1.22,pending,,
-2026-10-21,21:00,Poland: Ekstraliga Women,Sleza Wroclaw W,Czarni Sosnowiec W,84.4,5,8,rDz0Qa6r,15323766,,pending,,
-2026-10-21,21:30,Scotland: SWPL 1 Women,Celtic W,Hearts W,84.0,8,9,nDFNe3Sg,15323798,,pending,,
-2026-10-21,21:35,Scotland: SWPL 1 Women,Glasgow City W,Rangers W,90.0,8,9,fwJVgsc6,15323799,,pending,,
+2026-10-21,13:00,Romania: Superliga Women,Csikszereda M. Ciuc W,Gloria Bistrita W,86.0,9,7,SnJZAQeK,15323484,,goal,1-1,2026-10-21
+2026-10-21,15:00,England: Professional Development League,Peterborough U21,Sheffield Wed U21,85.9,7,7,fVY62oSb,15323503,,goal,2-0,2026-10-21
+2026-10-21,17:00,Norway: Division 3 - Group 2,Aalesund 2,Nardo,89.3,7,7,SIpOY4un,15323578,,goal,2-0,2026-10-21
+2026-10-21,18:30,Poland: III Liga - Group I,Widzew Lodz II,Warta Sieradz,81.8,9,8,MuZEm6eJ,14950297,1.27,goal,0-1,2026-10-21
+2026-10-21,20:00,Norway: OBOS-ligaen,Sogndal,Raufoss,83.5,8,10,zedJTiaC,15096821,1.17,no_goal,0-0,2026-10-21
+2026-10-21,21:00,England: Premier League Cup,Norwich U21,Bristol City U21,85.1,8,8,OUCHBiYr,15323778,1.22,goal,0-1,2026-10-21
+2026-10-21,21:00,Poland: Ekstraliga Women,Sleza Wroclaw W,Czarni Sosnowiec W,84.4,5,8,rDz0Qa6r,15323766,,no_goal,0-0,2026-10-21
+2026-10-21,21:30,Scotland: SWPL 1 Women,Celtic W,Hearts W,84.0,8,9,nDFNe3Sg,15323798,,goal,2-2,2026-10-21
+2026-10-21,21:35,Scotland: SWPL 1 Women,Glasgow City W,Rangers W,90.0,8,9,fwJVgsc6,15323799,,goal,1-0,2026-10-21
 2026-10-21,21:45,Scotland: SWPL 1 Women,Spartans W,Hibernian W,88.3,8,8,4WfeA2sm,15323802,,pending,,
