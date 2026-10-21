@@ -4,9 +4,9 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-21,05:00,2026-10-21T02:00:00+00:00,CONCACAF - Central American Cup,CD Marathon,Alianza FC,1x2,0.0,home,2.22,2.144,3.5,300.0,15323447,1638339278,2.144,won,2-1,1.22
 2026-10-21,07:00,2026-10-21T04:00:00+00:00,Japan - J3 League,Nagano Parceiro,Ryukyu,1x2,0.0,home,3.05,2.747,11.0,500.0,15323460,1638339297,3.4,lost,0-1,-1.0
 2026-10-21,13:00,2026-10-21T10:00:00+00:00,Japan - J3 League,Gifu,Sagamihara,1x2,0.0,away,4.2,3.962,6.0,500.0,15323478,1638385556,3.962,lost,2-1,-1.0
-2026-10-21,19:00,2026-10-21T16:00:00+00:00,Spain - Segunda Federacion,Terrassa,Girona B,1x2,0.0,away,3.55,3.409,4.1,500.0,15403375,1638394730,3.409,pending,,0.0
+2026-10-21,19:00,2026-10-21T16:00:00+00:00,Spain - Segunda Federacion,Terrassa,Girona B,1x2,0.0,away,3.55,3.409,4.1,500.0,15403375,1638394730,3.409,lost,1-0,-1.0
 2026-10-21,20:00,2026-10-21T17:00:00+00:00,Egypt - Premier League,Ceramica Cleopatra,Petrojet,1x2,0.0,draw,3.05,2.95,3.4,500.0,15323690,1638339176,3.243,pending,,0.0
 2026-10-22,01:30,2026-10-21T22:30:00+00:00,USA - USL League One,Sarasota Paradise,FC Naples,1x2,0.0,home,2.07,1.921,7.8,300.0,15094939,1638406855,2.184,pending,,0.0
-2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,1x2,0.0,draw,3.55,3.429,3.5,1200.0,15024105,1638350154,3.492,pending,,0.0
-2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,total,2.5,over,2.4,2.327,3.1,900.0,15024105,1638350154,2.453,pending,,0.0
-2026-10-22,04:00,2026-10-22T01:00:00+00:00,Mexico - Liga MX,Puebla,Monterrey,total,2.5,under,2.25,2.18,3.2,900.0,15339154,1638405880,2.324,pending,,0.0
+2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,1x2,0.0,draw,3.55,3.429,3.5,1200.0,15024105,1638350154,3.483,pending,,0.0
+2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,total,2.5,over,2.4,2.327,3.1,900.0,15024105,1638350154,2.482,pending,,0.0
+2026-10-22,04:00,2026-10-22T01:00:00+00:00,Mexico - Liga MX,Puebla,Monterrey,total,2.5,under,2.25,2.18,3.2,900.0,15339154,1638405880,2.318,pending,,0.0
