@@ -7,8 +7,9 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-21,19:00,2026-10-21T16:00:00+00:00,Spain - Segunda Federacion,Terrassa,Girona B,1x2,0.0,away,3.55,3.409,4.1,500.0,15403375,1638394730,3.409,lost,1-0,-1.0
 2026-10-21,20:00,2026-10-21T17:00:00+00:00,Egypt - Premier League,Ceramica Cleopatra,Petrojet,1x2,0.0,draw,3.05,2.95,3.4,500.0,15323690,1638339176,3.243,lost,2-0,-1.0
 2026-10-22,01:30,2026-10-21T22:30:00+00:00,USA - USL League One,Sarasota Paradise,FC Naples,1x2,0.0,home,2.07,1.921,7.8,300.0,15094939,1638406855,2.154,lost,2-3,-1.0
-2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONCACAF - Central American Cup,Luis Angel Firpo,Deportivo Saprissa,total,3.5,over,2.95,2.838,4.0,300.0,15339152,1638415376,2.633,pending,,0.0
-2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,1x2,0.0,draw,3.55,3.429,3.5,1200.0,15024105,1638350154,3.544,pending,,0.0
-2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,total,2.5,over,2.4,2.327,3.1,900.0,15024105,1638350154,2.44,pending,,0.0
+2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONCACAF - Central American Cup,Luis Angel Firpo,Deportivo Saprissa,total,3.5,over,2.95,2.838,4.0,300.0,15339152,1638415376,2.633,lost,0-0,-1.0
+2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,1x2,0.0,draw,3.55,3.429,3.5,1200.0,15024105,1638350154,3.544,lost,5-4,-1.0
+2026-10-22,03:30,2026-10-22T00:30:00+00:00,CONMEBOL - Copa Libertadores,Palmeiras,Fluminense,total,2.5,over,2.4,2.327,3.1,900.0,15024105,1638350154,2.44,won,5-4,1.4
 2026-10-22,04:00,2026-10-22T01:00:00+00:00,Mexico - Liga MX,Puebla,Monterrey,total,2.5,under,2.25,2.18,3.2,900.0,15339154,1638405880,2.128,pending,,0.0
-2026-10-22,05:30,2026-10-22T02:30:00+00:00,CONCACAF - Central American Cup,Cartagines,CD Olimpia,1x2,0.0,draw,3.0,2.66,12.8,300.0,15339188,1638420794,2.696,pending,,0.0
+2026-10-22,05:30,2026-10-22T02:30:00+00:00,CONCACAF - Central American Cup,Cartagines,CD Olimpia,1x2,0.0,draw,3.0,2.66,12.8,300.0,15339188,1638420794,2.875,pending,,0.0
+2026-10-22,06:10,2026-10-22T03:10:00+00:00,Mexico - Liga MX,Santos Laguna,UNAM Pumas,1x2,0.0,home,2.47,2.262,9.2,3000,15339190,1638357214,2.575,pending,,0.0
