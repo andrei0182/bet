@@ -17,8 +17,8 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-22,18:00,2026-10-22T15:00:00+00:00,Jordan - 1st Division,Al Sareeh,Jerash,total,3.5,over,3.05,2.803,8.8,400.0,15339308,1638761154,2.803,lost,1-1,-1.0
 2026-10-22,18:00,2026-10-22T15:00:00+00:00,Jordan - 1st Division,Al Sareeh,Jerash,total,2.5,over,1.9,1.778,6.9,400.0,15339308,1638761154,1.778,lost,1-1,-1.0
 2026-10-22,19:00,2026-10-22T16:00:00+00:00,Bahrain - Premier League,Sitra,Al Riffa,1x2,0.0,draw,3.8,3.662,3.8,500.0,15339349,1638466600,3.965,lost,2-3,-1.0
-2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Iberia 1999,Mjallby,total,3.5,over,3.55,3.363,5.6,1125.0,14744375,1638405879,3.805,pending,,0.0
-2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Iberia 1999,Mjallby,total,2.5,over,2.05,1.973,3.9,1125.0,14744375,1638405879,2.172,pending,,0.0
-2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Pafos,Riga FC,total,1.5,under,4.1,3.962,3.5,1125.0,14744391,1638407387,3.962,pending,,0.0
-2026-10-22,22:00,2026-10-22T19:00:00+00:00,Venezuela - Cup,Metropolitanos,Academia Anzoategui,total,3.5,over,2.65,2.416,9.7,400,15514156,1638761155,2.416,pending,,0.0
-2026-10-22,22:00,2026-10-22T19:00:00+00:00,Venezuela - Cup,Metropolitanos,Academia Anzoategui,total,2.5,over,1.7,1.638,3.8,400,15514156,1638761155,1.638,pending,,0.0
+2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Iberia 1999,Mjallby,total,3.5,over,3.55,3.363,5.6,1125.0,14744375,1638405879,3.805,lost,1-1,-1.0
+2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Iberia 1999,Mjallby,total,2.5,over,2.05,1.973,3.9,1125.0,14744375,1638405879,2.172,lost,1-1,-1.0
+2026-10-22,19:45,2026-10-22T16:45:00+00:00,UEFA - Conference League,Pafos,Riga FC,total,1.5,under,4.1,3.962,3.5,1125.0,14744391,1638407387,3.962,lost,1-1,-1.0
+2026-10-22,22:00,2026-10-22T19:00:00+00:00,Venezuela - Cup,Metropolitanos,Academia Anzoategui,total,3.5,over,2.65,2.416,9.7,400.0,15514156,1638761155,2.416,pending,,0.0
+2026-10-22,22:00,2026-10-22T19:00:00+00:00,Venezuela - Cup,Metropolitanos,Academia Anzoategui,total,2.5,over,1.7,1.638,3.8,400.0,15514156,1638761155,1.638,pending,,0.0
