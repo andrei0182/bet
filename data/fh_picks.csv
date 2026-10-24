@@ -18,7 +18,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-21,21:35,Scotland: SWPL 1 Women,Glasgow City W,Rangers W,90.0,8,9,fwJVgsc6,15323799,,goal,1-0,2026-10-21
 2026-10-21,21:45,Scotland: SWPL 1 Women,Spartans W,Hibernian W,88.3,8,8,4WfeA2sm,15323802,,no_goal,0-0,2026-10-22
 2026-10-22,16:00,Romania: Liga 2,FC Bihor,CSM Resita,80.2,7,6,lEizfnSB,14231634,1.34,goal,2-0,2026-10-22
-2026-10-22,19:00,United Arab Emirates: Presidents Cup,Shabab Al Ahli Dubai,Al Ain,83.0,9,9,pOc5l9GG,15418011,1.3,pending,,
+2026-10-22,19:00,United Arab Emirates: Presidents Cup,Shabab Al Ahli Dubai,Al Ain,83.0,9,9,pOc5l9GG,15418011,1.3,void,,2026-10-24
 2026-10-22,19:45,Europe: Conference League,Trabzonspor,Hearts,80.2,9,9,G8oqAYx0,14744384,1.21,goal,1-0,2026-10-22
 2026-10-22,22:30,Brazil: Copa do Brasil U20,Botafogo U20,Palmeiras U20,83.4,10,10,IyKD8vHN,15403371,,goal,1-2,2026-10-23
 2026-10-23,14:00,England: Premier League 2,Ipswich U21,Birmingham U21,84.7,10,7,KOILHaLM,15354474,,goal,3-0,2026-10-23
@@ -31,3 +31,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-23,20:00,Austria: Karnten,Lendorf,Launsdorf,84.5,8,8,0WBT3kpR,15354881,,goal,3-0,2026-10-23
 2026-10-23,21:00,England: Premier League 2,Fulham U21,Brighton U21,85.7,8,8,zHMY6r74,15355166,,goal,1-2,2026-10-23
 2026-10-23,21:00,Netherlands: Eerste Divisie,Jong AZ,Helmond,85.2,8,8,tj7Yne6s,15355108,1.21,goal,2-2,2026-10-23
+2026-10-24,11:15,Czech Republic: 3. CFL - Group A,Benesov,Bohemians 1905 B,91.5,8,8,AgDRGqhg,15370316,,pending,,
+2026-10-24,11:15,Czech Republic: 3. CFL - Group A,Loko Praha,Admira Prague,88.7,9,9,OxFJI5Nt,15078654,,pending,,
+2026-10-24,11:15,Czech Republic: 3. CFL - Group A,Povltavska FA,Pribram B,88.2,9,7,8QvAb2xP,15370317,,pending,,
+2026-10-24,12:30,Estonia: Meistriliiga Women,Paide Linnameeskond W,Elva W,88.9,7,7,GWsafP1D,15370382,,pending,,
+2026-10-24,15:00,Norway: Division 3 - Group 6,Elverum,SK Gjovik-Lyn,90.8,9,8,MitlAnOk,15370760,,pending,,
+2026-10-24,15:00,Norway: Division 3 - Group 2,Orkla,Nardo,89.4,8,8,0QkuaGBs,15370751,,pending,,
+2026-10-24,15:00,Poland: III Liga - Group I,Zambrow,Mlawa,88.5,8,8,YXg3Yl85,15372408,1.21,pending,,
+2026-10-24,15:30,Czech Republic: 3. CFL - Group A,Domazlice,Plzen B,91.9,10,7,00y20O7C,15078653,,pending,,
+2026-10-24,15:30,Czech Republic: 3. CFL - Group A,Kraluv Dvur,Ceske Budejovice,91.2,9,8,jXEsD1iI,15371084,,pending,,
+2026-10-24,18:00,Finland: Kansallinen Liiga Women,EBK W,HJS W,89.1,6,6,xbpDZgEN,15371267,,pending,,
