@@ -33,10 +33,11 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,5.5,over,2.92,2.605,12.1,400.0,15371175,1638653649,2.605,pending,,0.0
 2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,4.5,over,2.0,1.829,9.4,400.0,15371175,1638653649,1.829,pending,,0.0
 2026-10-24,16:00,2026-10-24T13:00:00+00:00,Netherlands - Tweede Divisie,Kozakken Boys,Barendrecht,1x2,0.0,draw,4.1,3.924,4.5,300.0,15371208,1638653636,3.924,lost,0-1,-1.0
-2026-10-24,17:00,2026-10-24T14:00:00+00:00,Sweden - Division 1 Norra,IF Karlstad,Stockholm Internazionale,1x2,0.0,home,2.95,2.815,4.8,750.0,15371452,1638664167,2.815,pending,,0.0
-2026-10-24,17:00,2026-10-24T14:00:00+00:00,Spain - Primera Federacion,Rayo Majadahonda,Sant Andreu,1x2,0.0,draw,3.2,3.083,3.8,750.0,14981783,1638653691,3.083,pending,,0.0
+2026-10-24,17:00,2026-10-24T14:00:00+00:00,Sweden - Division 1 Norra,IF Karlstad,Stockholm Internazionale,1x2,0.0,home,2.95,2.815,4.8,750.0,15371452,1638664167,2.815,lost,1-4,-1.0
+2026-10-24,17:00,2026-10-24T14:00:00+00:00,Spain - Primera Federacion,Rayo Majadahonda,Sant Andreu,1x2,0.0,draw,3.2,3.083,3.8,750.0,14981783,1638653691,3.083,lost,2-1,-1.0
 2026-10-24,17:30,2026-10-24T14:30:00+00:00,Spain - Primera Federacion,Mirandes,Racing Ferrol,1x2,0.0,draw,3.1,2.996,3.5,750.0,15168767,1638666876,2.996,pending,,0.0
-2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,2.5,under,2.42,2.175,11.3,400,15373022,1638686163,2.175,pending,,0.0
-2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,3.5,under,1.56,1.502,3.9,400,15373022,1638686163,1.502,pending,,0.0
-2026-10-24,18:30,2026-10-24T15:30:00+00:00,Italy - Serie C Group A,Union Brescia,Cittadella,1x2,0.0,draw,3.2,3.089,3.6,1250,15145338,1638676588,3.089,pending,,0.0
-2026-10-24,21:00,2026-10-24T18:00:00+00:00,Morocco - Botola Pro,Union Touarga,Wydad Casablanca,1x2,0.0,draw,2.82,2.707,4.2,300.0,15560978,1638871385,2.687,pending,,0.0
+2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,2.5,under,2.42,2.175,11.3,400.0,15373022,1638686163,2.175,pending,,0.0
+2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,3.5,under,1.56,1.502,3.9,400.0,15373022,1638686163,1.502,pending,,0.0
+2026-10-24,18:30,2026-10-24T15:30:00+00:00,Italy - Serie C Group A,Union Brescia,Cittadella,1x2,0.0,draw,3.2,3.089,3.6,1250.0,15145338,1638676588,3.089,pending,,0.0
+2026-10-24,19:50,2026-10-24T16:50:00+00:00,Kuwait - Premier League,Al Sahel,Al Nasr SC,1x2,0.0,away,2.2,2.053,7.1,300,15372752,1638686140,2.053,pending,,0.0
+2026-10-24,21:00,2026-10-24T18:00:00+00:00,Morocco - Botola Pro,Union Touarga,Wydad Casablanca,1x2,0.0,draw,2.82,2.707,4.2,300.0,15560978,1638871385,2.686,pending,,0.0
