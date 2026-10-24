@@ -30,7 +30,10 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-24,13:00,2026-10-24T10:00:00+00:00,Poland - 3rd Liga,Wisla Krakow II,Wisloka Debica,total,2.5,over,1.68,1.548,8.6,400.0,15370397,1638868620,1.548,won,3-1,0.68
 2026-10-24,14:00,2026-10-24T11:00:00+00:00,Vietnam - V League,Hong Linh Ha Tinh,Hai Phong,1x2,0.0,draw,2.77,2.683,3.2,300.0,15370653,1638644147,2.782,lost,2-1,-1.0
 2026-10-24,14:00,2026-10-24T11:00:00+00:00,Poland - 3rd Liga,Mazovia Minsk Mazowiecki,Lechia Tomaszow Mazowiecki,total,3.5,over,2.07,1.964,5.4,400.0,15370520,1638644128,1.964,won,3-1,1.07
-2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,5.5,over,2.92,2.605,12.1,400,15371175,1638653649,2.605,pending,,0.0
-2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,4.5,over,2.0,1.829,9.4,400,15371175,1638653649,1.829,pending,,0.0
-2026-10-24,16:00,2026-10-24T13:00:00+00:00,Netherlands - Tweede Divisie,Kozakken Boys,Barendrecht,1x2,0.0,draw,4.1,3.924,4.5,300,15371208,1638653636,3.924,pending,,0.0
+2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,5.5,over,2.92,2.605,12.1,400.0,15371175,1638653649,2.605,pending,,0.0
+2026-10-24,16:00,2026-10-24T13:00:00+00:00,Norway - 3rd Division,Finnsnes IL,Harstad,total,4.5,over,2.0,1.829,9.4,400.0,15371175,1638653649,1.829,pending,,0.0
+2026-10-24,16:00,2026-10-24T13:00:00+00:00,Netherlands - Tweede Divisie,Kozakken Boys,Barendrecht,1x2,0.0,draw,4.1,3.924,4.5,300.0,15371208,1638653636,3.924,pending,,0.0
+2026-10-24,17:00,2026-10-24T14:00:00+00:00,Sweden - Division 1 Norra,IF Karlstad,Stockholm Internazionale,1x2,0.0,home,2.95,2.815,4.8,750,15371452,1638664167,2.815,pending,,0.0
+2026-10-24,17:00,2026-10-24T14:00:00+00:00,Spain - Primera Federacion,Rayo Majadahonda,Sant Andreu,1x2,0.0,draw,3.2,3.083,3.8,750,14981783,1638653691,3.083,pending,,0.0
+2026-10-24,17:30,2026-10-24T14:30:00+00:00,Spain - Primera Federacion,Mirandes,Racing Ferrol,1x2,0.0,draw,3.1,2.996,3.5,750,15168767,1638666876,2.996,pending,,0.0
 2026-10-24,21:00,2026-10-24T18:00:00+00:00,Morocco - Botola Pro,Union Touarga,Wydad Casablanca,1x2,0.0,draw,2.82,2.707,4.2,300.0,15560978,1638871385,2.687,pending,,0.0
