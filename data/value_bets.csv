@@ -36,8 +36,8 @@ date,kickoff_local,kickoff_utc,league,home,away,market,line,selection,sb_odds,fa
 2026-10-24,17:00,2026-10-24T14:00:00+00:00,Sweden - Division 1 Norra,IF Karlstad,Stockholm Internazionale,1x2,0.0,home,2.95,2.815,4.8,750.0,15371452,1638664167,2.815,lost,1-4,-1.0
 2026-10-24,17:00,2026-10-24T14:00:00+00:00,Spain - Primera Federacion,Rayo Majadahonda,Sant Andreu,1x2,0.0,draw,3.2,3.083,3.8,750.0,14981783,1638653691,3.083,lost,2-1,-1.0
 2026-10-24,17:30,2026-10-24T14:30:00+00:00,Spain - Primera Federacion,Mirandes,Racing Ferrol,1x2,0.0,draw,3.1,2.996,3.5,750.0,15168767,1638666876,2.996,lost,2-0,-1.0
-2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,2.5,under,2.42,2.175,11.3,400.0,15373022,1638686163,2.175,pending,,0.0
-2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,3.5,under,1.56,1.502,3.9,400.0,15373022,1638686163,1.502,pending,,0.0
+2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,2.5,under,2.42,2.175,11.3,400.0,15373022,1638686163,2.175,void,,0.0
+2026-10-24,18:00,2026-10-24T15:00:00+00:00,Poland - 3rd Liga,KSZO Ostrowiec Swietokrzyski,Sokol Kolbuszowa Dolna,total,3.5,under,1.56,1.502,3.9,400.0,15373022,1638686163,1.502,void,,0.0
 2026-10-24,18:30,2026-10-24T15:30:00+00:00,Italy - Serie C Group A,Union Brescia,Cittadella,1x2,0.0,draw,3.2,3.089,3.6,1250.0,15145338,1638676588,3.089,lost,2-1,-1.0
 2026-10-24,19:50,2026-10-24T16:50:00+00:00,Kuwait - Premier League,Al Sahel,Al Nasr SC,1x2,0.0,away,2.2,2.053,7.1,300.0,15372752,1638686140,2.053,won,0-3,1.2
 2026-10-24,21:00,2026-10-24T18:00:00+00:00,Belgium - 2nd Amateur Division,KVK Wellen,Bocholter VV,total,2.5,under,2.67,2.575,3.7,400.0,15564330,1638976346,2.575,pending,,0.0
