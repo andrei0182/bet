@@ -50,7 +50,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-25,17:00,Luxembourg: BGL Ligue,Wiltz,Rumelange,88.8,7,7,nNjolY24,15388856,,goal,2-2,2026-10-25
 2026-10-25,17:30,Estonia: Meistriliiga Women,Saku Sporting W,Harju JK Laagri W,90.9,7,8,rJqidoX0,15370383,,no_goal,0-0,2026-10-25
 2026-10-25,17:45,Netherlands: Eredivisie Women,PEC Zwolle W,Twente W,89.9,5,5,637cp2zn,15389011,,goal,1-0,2026-10-25
-2026-10-25,18:10,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,89.6,7,8,j9OrlCQp,15389210,,pending,,
+2026-10-25,18:10,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,89.6,7,8,j9OrlCQp,15389210,,void,,2026-10-27
 2026-10-26,15:00,England: Professional Development League,Barnsley U21,Peterborough U21,92.5,5,7,YuzNb3RN,15404552,,goal,2-4,2026-10-26
 2026-10-26,15:00,England: Professional Development League,Swansea U21,Charlton U21,86.4,7,8,0SyF0PdB,15404553,,goal,0-1,2026-10-26
 2026-10-26,15:00,Austria: Karnten,TSV Grafenstein,Atus Ferlach,84.4,9,9,fg3a3Fko,15404550,,goal,1-1,2026-10-26
@@ -61,3 +61,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-26,21:00,England: Premier League 2,Blackburn U21,West Brom U21,81.5,5,7,d4CaAHDd,15404644,,goal,0-2,2026-10-26
 2026-10-26,21:00,England: Premier League 2,Derby U21,Norwich U21,85.2,6,8,4l61Ux5S,15404647,,goal,0-3,2026-10-26
 2026-10-26,21:00,England: Premier League 2,Newcastle Utd U21,Sunderland U21,85.7,8,5,nyjuNfc2,15404649,,goal,0-1,2026-10-26
+2026-10-27,15:00,England: Professional Development League,Bolton U21,Huddersfield U21,84.4,8,6,4rHnFOB4,15418845,,pending,,
+2026-10-27,18:00,Estonia: Meistriliiga,Levadia,Tammeka,85.1,10,10,YuwtVphm,15418921,1.12,pending,,
+2026-10-27,20:00,Austria: OFB Cup,Grazer AK,Altach,85.2,7,7,dhjEjFPh,14905742,1.37,pending,,
+2026-10-27,21:00,England: Professional Development League,Cardiff U21,Coventry U21,86.7,7,8,xAUgD2tH,15419043,,pending,,
+2026-10-27,21:45,England: National League,Boston Utd,Gateshead,84.2,10,10,GMf80uHk,15419091,1.26,pending,,
+2026-10-27,21:45,England: Southern League Premier Central,Kettering,Rushall,84.5,10,10,YX32RcKb,15419126,1.24,pending,,
+2026-10-27,21:45,England: Southern League Premier Central,Needham Market,Leighton Town,85.1,10,10,tb7APykB,15419127,1.24,pending,,
+2026-10-27,21:45,England: National League North,Spennymoor,South Shields,87.8,10,10,jFJQOG9a,15419118,1.22,pending,,
+2026-10-27,22:00,Netherlands: KNVB Beker,HFC,G.A. Eagles,84.9,10,7,rR15xapQ,15419150,1.14,pending,,
+2026-10-27,22:00,Spain: Copa del Rey,Recreativo Huelva,Rayo Vallecano,84.3,10,7,0E0m2JqJ,15419156,1.26,pending,,
