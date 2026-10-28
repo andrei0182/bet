@@ -65,9 +65,19 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-27,18:00,Estonia: Meistriliiga,Levadia,Tammeka,85.1,10,10,YuwtVphm,15418921,1.12,goal,0-1,2026-10-27
 2026-10-27,20:00,Austria: OFB Cup,Grazer AK,Altach,85.2,7,7,dhjEjFPh,14905742,1.37,goal,0-1,2026-10-27
 2026-10-27,21:00,England: Professional Development League,Cardiff U21,Coventry U21,86.7,7,8,xAUgD2tH,15419043,,goal,2-1,2026-10-27
-2026-10-27,21:45,England: National League,Boston Utd,Gateshead,84.2,10,10,GMf80uHk,15419091,1.26,pending,,
-2026-10-27,21:45,England: Southern League Premier Central,Kettering,Rushall,84.5,10,10,YX32RcKb,15419126,1.24,pending,,
-2026-10-27,21:45,England: Southern League Premier Central,Needham Market,Leighton Town,85.1,10,10,tb7APykB,15419127,1.24,pending,,
-2026-10-27,21:45,England: National League North,Spennymoor,South Shields,87.8,10,10,jFJQOG9a,15419118,1.22,pending,,
-2026-10-27,22:00,Netherlands: KNVB Beker,HFC,G.A. Eagles,84.9,10,7,rR15xapQ,15419150,1.14,pending,,
+2026-10-27,21:45,England: National League,Boston Utd,Gateshead,84.2,10,10,GMf80uHk,15419091,1.26,goal,0-1,2026-10-28
+2026-10-27,21:45,England: Southern League Premier Central,Kettering,Rushall,84.5,10,10,YX32RcKb,15419126,1.24,goal,0-2,2026-10-28
+2026-10-27,21:45,England: Southern League Premier Central,Needham Market,Leighton Town,85.1,10,10,tb7APykB,15419127,1.24,goal,0-1,2026-10-28
+2026-10-27,21:45,England: National League North,Spennymoor,South Shields,87.8,10,10,jFJQOG9a,15419118,1.22,goal,0-1,2026-10-28
+2026-10-27,22:00,Netherlands: KNVB Beker,HFC,G.A. Eagles,84.9,10,7,rR15xapQ,15419150,1.14,goal,0-2,2026-10-28
 2026-10-27,22:00,Spain: Copa del Rey,Recreativo Huelva,Rayo Vallecano,84.3,10,7,0E0m2JqJ,15419156,1.26,pending,,
+2026-10-28,11:30,Czech Republic: 3. CFL - Group A,Pribram B,Benesov,87.3,8,9,KMZo468m,15514872,,pending,,
+2026-10-28,13:15,Czech Republic: U19 League,Slavia Prague U19,Zlin U19,86.3,10,6,nZh2XOBL,15435492,,pending,,
+2026-10-28,13:30,Hungary: Hungarian Cup,ESMTK Budapest,Haladas VSE,87.5,9,9,EmDaJ5Pk,15105039,,pending,,
+2026-10-28,15:15,Slovenia: 3. SNL - East,Odranci,NK Smartno,87.4,9,8,fweNsmm1,15435635,,pending,,
+2026-10-28,15:30,Czech Republic: 3. CFL - Group A,Kraluv Dvur,Sparta Prague B,85.6,9,8,dhxGSnjC,15041092,,pending,,
+2026-10-28,15:30,Italy: Coppa Italia Serie D,Teramo,Latte Dolce,86.3,10,10,4KQPJAJj,15435621,,pending,,
+2026-10-28,19:00,Norway: NM Cup,Molde,Stromsgodset,85.7,8,10,2ggz1AM9,15435841,1.1,pending,,
+2026-10-28,21:30,Austria: OFB Cup,LASK,Ried,86.0,10,7,l08Llgf5,14905743,1.17,pending,,
+2026-10-28,21:45,Scotland: Premiership,Celtic,Dundee Utd,86.1,10,7,IsRLTFdD,15436081,1.18,pending,,
+2026-10-28,21:45,Scotland: Premiership,St. Mirren,Hibernian,87.3,8,9,MBLhrFB6,15436084,1.31,pending,,
