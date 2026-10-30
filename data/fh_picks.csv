@@ -73,7 +73,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-27,22:00,Spain: Copa del Rey,Recreativo Huelva,Rayo Vallecano,84.3,10,7,0E0m2JqJ,15419156,1.26,void,,2026-10-29
 2026-10-28,11:30,Czech Republic: 3. CFL - Group A,Pribram B,Benesov,87.3,8,9,KMZo468m,15514872,,goal,0-3,2026-10-28
 2026-10-28,13:15,Czech Republic: U19 League,Slavia Prague U19,Zlin U19,86.3,10,6,nZh2XOBL,15435492,,goal,1-1,2026-10-28
-2026-10-28,13:30,Hungary: Hungarian Cup,ESMTK Budapest,Haladas VSE,87.5,9,9,EmDaJ5Pk,15105039,,pending,,
+2026-10-28,13:30,Hungary: Hungarian Cup,ESMTK Budapest,Haladas VSE,87.5,9,9,EmDaJ5Pk,15105039,,void,,2026-10-30
 2026-10-28,15:15,Slovenia: 3. SNL - East,Odranci,NK Smartno,87.4,9,8,fweNsmm1,15435635,,goal,3-0,2026-10-28
 2026-10-28,15:30,Czech Republic: 3. CFL - Group A,Kraluv Dvur,Sparta Prague B,85.6,9,8,dhxGSnjC,15041092,,no_goal,0-0,2026-10-28
 2026-10-28,15:30,Italy: Coppa Italia Serie D,Teramo,Latte Dolce,86.3,10,10,4KQPJAJj,15435621,,goal,0-1,2026-10-28
@@ -89,5 +89,15 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-10-29,19:45,Europe: UEFA Champions League Women,Paris FC W,Hacken W,80.5,7,10,jTh0krFN,15450525,1.29,goal,1-0,2026-10-29
 2026-10-29,21:00,Netherlands: KNVB Beker,De Treffers,Heracles,84.6,8,9,K6eqVGx0,15450585,1.21,no_goal,0-0,2026-10-29
 2026-10-29,21:00,Netherlands: KNVB Beker,RKAV Volendam,Raalte,82.6,8,9,8UI1vtXA,15450588,1.2,goal,2-0,2026-10-29
-2026-10-29,22:00,Netherlands: KNVB Beker,Groningen,FC Emmen,86.1,6,9,hKgiTf7C,15450614,1.21,pending,,
-2026-10-29,22:30,Peru: Liga 1,Sporting Cristal,Alianza Lima,80.5,9,7,2oktM9gB,15450622,1.37,pending,,
+2026-10-29,22:00,Netherlands: KNVB Beker,Groningen,FC Emmen,86.1,6,9,hKgiTf7C,15450614,1.21,goal,0-1,2026-10-30
+2026-10-29,22:30,Peru: Liga 1,Sporting Cristal,Alianza Lima,80.5,9,7,2oktM9gB,15450622,1.37,goal,2-2,2026-10-30
+2026-10-30,10:00,Malaysia: Super League,DPMM,Negeri Sembilan,87.1,8,5,WM8Hxo8r,15466472,1.26,pending,,
+2026-10-30,12:00,Czech Republic: U19 League,Opava U19,Sigma Olomouc U19,85.4,9,7,S6oAN20m,15466492,,pending,,
+2026-10-30,14:50,United Arab Emirates: Division 1,Emirates Club,Dibba Al Fujairah,86.3,6,5,hvS1p3y0,15466577,1.25,pending,,
+2026-10-30,18:00,Estonia: Meistriliiga Women,Saku Sporting W,Flora W,86.2,7,8,tCbA1t9t,15466750,,pending,,
+2026-10-30,20:00,Austria: Salzburg,Strasswalchen,Burmoos,87.7,9,8,YiQaLDTQ,15466968,,pending,,
+2026-10-30,20:30,Austria: Burgenland,Neusiedl,SV Eberau,85.2,8,8,8nzh9s74,15467058,,pending,,
+2026-10-30,21:00,England: Premier League Cup,Blackburn U21,Southampton U21,84.8,5,8,QDN03WdL,15467161,1.14,pending,,
+2026-10-30,21:00,England: Premier League Cup,Coventry U21,Ipswich U21,88.8,9,10,0QhjVf4L,15481166,1.14,pending,,
+2026-10-30,21:00,Netherlands: Eerste Divisie,Helmond,Eindhoven FC,85.5,9,9,Wf6TejkC,15467102,1.27,pending,,
+2026-10-30,21:00,England: Premier League Cup,Newcastle Utd U21,Peterborough U21,87.7,9,8,QgX6skz2,15467163,1.13,pending,,
