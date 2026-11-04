@@ -131,13 +131,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-03,21:45,Scotland: Challenge Cup,Morton,Kelty Hearts,84.1,8,10,llE6dcKt,15530854,1.18,goal,0-1,2026-11-04
 2026-11-03,21:45,Scotland: Challenge Cup,Ross County,Celtic B,89.2,10,8,jF9TEay1,15530857,1.06,goal,1-0,2026-11-04
 2026-11-03,21:45,England: National League Cup,Worthing,Fulham U21,87.9,10,7,IHFFO19D,15530996,1.22,goal,1-0,2026-11-04
-2026-11-04,11:15,Czech Republic: 3. CFL - Group A,Sparta Prague B,Plzen B,81.0,7,8,61hKJi7s,15546093,,pending,,
-2026-11-04,12:45,Serbia: U19 League,Brodarac U19,Jedinstvo U. U19,82.5,8,8,O0XD6cQ8,15546190,,pending,,
-2026-11-04,13:00,Czech Republic: U19 League,Brno U19,Teplice U19,83.8,9,6,ELffZps9,15546110,,pending,,
-2026-11-04,14:00,Serbia: U19 League,Mladost Lucani U19,IMT U19,83.2,7,8,zNPacgme,15546193,,pending,,
-2026-11-04,15:00,Serbia: U19 League,Usce U19,Vojvodina U19,86.9,8,7,pjnKpG3k,15546188,,pending,,
-2026-11-04,18:00,Cyprus: Cyprus Cup,Doxa,Ol. Nicosia,81.3,6,7,zmRi47CG,15226777,1.25,pending,,
-2026-11-04,19:00,Estonia: Estonian Cup,Flora,Tartu Welco,84.5,10,9,QJWGUhhm,15735803,1.11,pending,,
+2026-11-04,11:15,Czech Republic: 3. CFL - Group A,Sparta Prague B,Plzen B,81.0,7,8,61hKJi7s,15546093,,goal,0-1,2026-11-04
+2026-11-04,12:45,Serbia: U19 League,Brodarac U19,Jedinstvo U. U19,82.5,8,8,O0XD6cQ8,15546190,,goal,2-1,2026-11-04
+2026-11-04,13:00,Czech Republic: U19 League,Brno U19,Teplice U19,83.8,9,6,ELffZps9,15546110,,goal,2-0,2026-11-04
+2026-11-04,14:00,Serbia: U19 League,Mladost Lucani U19,IMT U19,83.2,7,8,zNPacgme,15546193,,goal,0-1,2026-11-04
+2026-11-04,15:00,Serbia: U19 League,Usce U19,Vojvodina U19,86.9,8,7,pjnKpG3k,15546188,,no_goal,0-0,2026-11-04
+2026-11-04,18:00,Cyprus: Cyprus Cup,Doxa,Ol. Nicosia,81.3,6,7,zmRi47CG,15226777,1.25,goal,0-2,2026-11-04
+2026-11-04,19:00,Estonia: Estonian Cup,Flora,Tartu Welco,84.5,10,9,QJWGUhhm,15735803,1.11,goal,3-1,2026-11-04
 2026-11-04,21:30,Scotland: SWPL 1 Women,Hibernian W,Celtic W,84.5,7,8,l0ExAgm4,15710379,,pending,,
 2026-11-04,21:45,England: Championship,Cardiff,West Ham,84.0,9,10,C6FyidBa,14395791,1.21,pending,,
 2026-11-04,22:00,Europe: Champions League,PSV,Club Brugge KV,81.0,10,9,ptuqtEuP,14739011,1.19,pending,,
