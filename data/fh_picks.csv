@@ -122,7 +122,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-02,21:00,Netherlands: Eerste Divisie,Jong Utrecht,Dordrecht,87.0,7,9,SQBtjLIj,15515786,1.24,goal,3-1,2026-11-02
 2026-11-02,22:15,Portugal: Liga Portugal,Benfica,Alverca,81.1,10,5,zs2gO75k,14351001,1.18,no_goal,0-0,2026-11-03
 2026-11-03,21:00,England: National League Cup,Hartlepool,Leeds U21,84.5,10,10,pO71n51K,15530959,1.21,goal,2-0,2026-11-03
-2026-11-03,21:00,England: National League Cup,Sutton,Southampton U21,84.0,10,9,fHamw1O6,15530961,1.17,pending,,
+2026-11-03,21:00,England: National League Cup,Sutton,Southampton U21,84.0,10,9,fHamw1O6,15530961,1.17,void,,2026-11-05
 2026-11-03,21:00,England: National League Cup,Truro,West Brom U21,84.8,10,7,SUceyugJ,15530962,1.16,no_goal,0-0,2026-11-03
 2026-11-03,21:30,England: National League Cup,Braintree,Norwich U21,88.7,10,8,Cx40SqAl,15530993,1.2,goal,2-1,2026-11-03
 2026-11-03,21:45,England: National League Cup,Aldershot,Ipswich U21,87.8,10,10,pj28QNv1,15530995,1.19,goal,0-1,2026-11-04
@@ -141,7 +141,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-04,21:30,Scotland: SWPL 1 Women,Hibernian W,Celtic W,84.5,7,8,l0ExAgm4,15710379,,goal,0-1,2026-11-05
 2026-11-04,21:45,England: Championship,Cardiff,West Ham,84.0,9,10,C6FyidBa,14395791,1.21,goal,3-0,2026-11-05
 2026-11-04,22:00,Europe: Champions League,PSV,Club Brugge KV,81.0,10,9,ptuqtEuP,14739011,1.19,goal,0-1,2026-11-05
-2026-11-05,17:00,Romania: Liga 2,Chindia Targoviste,Popesti Leordeni,82.3,7,6,AuAWXMRD,14438657,1.26,pending,,
-2026-11-05,19:45,Europe: Conference League,Thun,Hearts,81.1,9,10,llGRbfR0,14744397,1.27,pending,,
-2026-11-05,19:45,Europe: Conference League,Trabzonspor,Freiburg,82.7,9,9,vuQXWA23,14744405,1.27,pending,,
+2026-11-05,17:00,Romania: Liga 2,Chindia Targoviste,Popesti Leordeni,82.3,7,6,AuAWXMRD,14438657,1.26,goal,1-0,2026-11-05
+2026-11-05,19:45,Europe: Conference League,Thun,Hearts,81.1,9,10,llGRbfR0,14744397,1.27,goal,2-0,2026-11-05
+2026-11-05,19:45,Europe: Conference League,Trabzonspor,Freiburg,82.7,9,9,vuQXWA23,14744405,1.27,goal,0-1,2026-11-05
 2026-11-05,22:30,Brazil: Copa do Brasil U20,Paysandu PA U20,Palmeiras U20,86.5,5,10,2Fb567w2,15640710,,pending,,
