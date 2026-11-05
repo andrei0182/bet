@@ -138,6 +138,10 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-04,15:00,Serbia: U19 League,Usce U19,Vojvodina U19,86.9,8,7,pjnKpG3k,15546188,,no_goal,0-0,2026-11-04
 2026-11-04,18:00,Cyprus: Cyprus Cup,Doxa,Ol. Nicosia,81.3,6,7,zmRi47CG,15226777,1.25,goal,0-2,2026-11-04
 2026-11-04,19:00,Estonia: Estonian Cup,Flora,Tartu Welco,84.5,10,9,QJWGUhhm,15735803,1.11,goal,3-1,2026-11-04
-2026-11-04,21:30,Scotland: SWPL 1 Women,Hibernian W,Celtic W,84.5,7,8,l0ExAgm4,15710379,,pending,,
-2026-11-04,21:45,England: Championship,Cardiff,West Ham,84.0,9,10,C6FyidBa,14395791,1.21,pending,,
-2026-11-04,22:00,Europe: Champions League,PSV,Club Brugge KV,81.0,10,9,ptuqtEuP,14739011,1.19,pending,,
+2026-11-04,21:30,Scotland: SWPL 1 Women,Hibernian W,Celtic W,84.5,7,8,l0ExAgm4,15710379,,goal,0-1,2026-11-05
+2026-11-04,21:45,England: Championship,Cardiff,West Ham,84.0,9,10,C6FyidBa,14395791,1.21,goal,3-0,2026-11-05
+2026-11-04,22:00,Europe: Champions League,PSV,Club Brugge KV,81.0,10,9,ptuqtEuP,14739011,1.19,goal,0-1,2026-11-05
+2026-11-05,17:00,Romania: Liga 2,Chindia Targoviste,Popesti Leordeni,82.3,7,6,AuAWXMRD,14438657,1.26,pending,,
+2026-11-05,19:45,Europe: Conference League,Thun,Hearts,81.1,9,10,llGRbfR0,14744397,1.27,pending,,
+2026-11-05,19:45,Europe: Conference League,Trabzonspor,Freiburg,82.7,9,9,vuQXWA23,14744405,1.27,pending,,
+2026-11-05,22:30,Brazil: Copa do Brasil U20,Paysandu PA U20,Palmeiras U20,86.5,5,10,2Fb567w2,15640710,,pending,,
