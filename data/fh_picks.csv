@@ -145,13 +145,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-05,19:45,Europe: Conference League,Thun,Hearts,81.1,9,10,llGRbfR0,14744397,1.27,goal,2-0,2026-11-05
 2026-11-05,19:45,Europe: Conference League,Trabzonspor,Freiburg,82.7,9,9,vuQXWA23,14744405,1.27,goal,0-1,2026-11-05
 2026-11-05,22:30,Brazil: Copa do Brasil U20,Paysandu PA U20,Palmeiras U20,86.5,5,10,2Fb567w2,15640710,,goal,1-1,2026-11-06
-2026-11-06,12:00,Czech Republic: U19 League,Karvina U19,Zlin U19,88.9,8,6,QciASlrp,15578191,,pending,,
-2026-11-06,14:45,United Arab Emirates: Division 1,Al Thaid,Emirates Club,87.7,6,6,QipirYBT,15578354,1.27,pending,,
-2026-11-06,19:30,Czech Republic: 4. liga - Group E,Batov,Kromeriz B,88.2,8,8,QehTHbUq,15611502,,pending,,
-2026-11-06,20:00,Austria: Salzburg,Burmoos,Golling,89.1,8,8,fuGQOnzJ,15611480,,pending,,
-2026-11-06,20:30,Austria: Regionalliga East,Kremser,Leobendorf,87.9,9,8,plNowcXi,15578711,,pending,,
-2026-11-06,21:00,Netherlands: Eerste Divisie,Dordrecht,NAC Breda,86.8,9,9,Sp2zC2uA,15578734,1.22,pending,,
-2026-11-06,21:00,Netherlands: Eerste Divisie,Helmond,FC Volendam,87.6,9,9,UDjE4KXq,15578736,1.22,pending,,
-2026-11-06,21:00,England: Professional Development League,Swansea U21,Bristol City U21,86.5,8,8,8CBJTNQc,15578771,,pending,,
-2026-11-06,21:30,Wales: Cymru South,Llanelli,Pontardawe,87.8,7,5,0Yzwd5gK,15578797,1.15,pending,,
+2026-11-06,12:00,Czech Republic: U19 League,Karvina U19,Zlin U19,88.9,8,6,QciASlrp,15578191,,goal,0-1,2026-11-06
+2026-11-06,14:45,United Arab Emirates: Division 1,Al Thaid,Emirates Club,87.7,6,6,QipirYBT,15578354,1.27,goal,1-1,2026-11-06
+2026-11-06,19:30,Czech Republic: 4. liga - Group E,Batov,Kromeriz B,88.2,8,8,QehTHbUq,15611502,,no_goal,0-0,2026-11-06
+2026-11-06,20:00,Austria: Salzburg,Burmoos,Golling,89.1,8,8,fuGQOnzJ,15611480,,no_goal,0-0,2026-11-06
+2026-11-06,20:30,Austria: Regionalliga East,Kremser,Leobendorf,87.9,9,8,plNowcXi,15578711,,no_goal,0-0,2026-11-06
+2026-11-06,21:00,Netherlands: Eerste Divisie,Dordrecht,NAC Breda,86.8,9,9,Sp2zC2uA,15578734,1.22,no_goal,0-0,2026-11-06
+2026-11-06,21:00,Netherlands: Eerste Divisie,Helmond,FC Volendam,87.6,9,9,UDjE4KXq,15578736,1.22,goal,0-1,2026-11-06
+2026-11-06,21:00,England: Professional Development League,Swansea U21,Bristol City U21,86.5,8,8,8CBJTNQc,15578771,,goal,2-1,2026-11-06
+2026-11-06,21:30,Wales: Cymru South,Llanelli,Pontardawe,87.8,7,5,0Yzwd5gK,15578797,1.15,goal,1-1,2026-11-06
 2026-11-06,21:45,Wales: Cymru Premier,Cambrian United,Barry,86.8,9,9,tpClJRWa,15578821,1.24,pending,,
