@@ -155,13 +155,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-06,21:00,England: Professional Development League,Swansea U21,Bristol City U21,86.5,8,8,8CBJTNQc,15578771,,goal,2-1,2026-11-06
 2026-11-06,21:30,Wales: Cymru South,Llanelli,Pontardawe,87.8,7,5,0Yzwd5gK,15578797,1.15,goal,1-1,2026-11-06
 2026-11-06,21:45,Wales: Cymru Premier,Cambrian United,Barry,86.8,9,9,tpClJRWa,15578821,1.24,no_goal,0-0,2026-11-07
-2026-11-07,11:15,Czech Republic: 4. liga - Group F,Bridlicna,Frydlant n. O.,88.7,8,8,nPVyTd7l,15594100,,pending,,
-2026-11-07,12:00,Slovakia: Orange Liga Women,Trencin W,Komarno W,90.3,7,7,0vCrSQGq,15594112,,pending,,
-2026-11-07,12:00,Slovakia: Orange Liga Women,Trnava W,Ruzomberok W,87.3,6,7,4z5cyVgc,15594111,,pending,,
-2026-11-07,15:00,Czech Republic: 3. CFL - Group A,Domazlice,Pisek,88.6,8,8,zHKHv81c,15594604,,pending,,
-2026-11-07,15:00,Czech Republic: 4. liga - Group A,Spartak Pribram,Milevsko,89.8,8,7,lbXn4fN0,15594654,,pending,,
-2026-11-07,15:00,Slovakia: Orange Liga Women,Z. Moravce-Vrable W,Petrzalka W,92.3,7,6,48QCXngM,15594908,,pending,,
-2026-11-07,16:30,Wales: Cymru South,Trethomas Bluebirds,Llantwit Major,87.8,6,8,ObMWpuoJ,15594916,1.22,pending,,
-2026-11-07,17:00,England: Southern League Premier Central,Kettering,Redditch,88.6,10,10,YkoNe0V6,15595276,1.25,pending,,
-2026-11-07,18:00,England: Premier League 2,Southampton U21,Norwich U21,88.2,8,9,IXgyPypm,15594446,,pending,,
-2026-11-07,21:30,Andorra: Primera Divisió,Casa de Portugal,Esperanca,87.7,6,6,rTMCthLh,15596867,,pending,,
+2026-11-07,11:15,Czech Republic: 4. liga - Group F,Bridlicna,Frydlant n. O.,88.7,8,8,nPVyTd7l,15594100,,goal,3-1,2026-11-07
+2026-11-07,12:00,Slovakia: Orange Liga Women,Trencin W,Komarno W,90.3,7,7,0vCrSQGq,15594112,,no_goal,0-0,2026-11-07
+2026-11-07,12:00,Slovakia: Orange Liga Women,Trnava W,Ruzomberok W,87.3,6,7,4z5cyVgc,15594111,,no_goal,0-0,2026-11-07
+2026-11-07,15:00,Czech Republic: 3. CFL - Group A,Domazlice,Pisek,88.6,8,8,zHKHv81c,15594604,,goal,1-2,2026-11-07
+2026-11-07,15:00,Czech Republic: 4. liga - Group A,Spartak Pribram,Milevsko,89.8,8,7,lbXn4fN0,15594654,,goal,1-1,2026-11-07
+2026-11-07,15:00,Slovakia: Orange Liga Women,Z. Moravce-Vrable W,Petrzalka W,92.3,7,6,48QCXngM,15594908,,goal,7-1,2026-11-07
+2026-11-07,16:30,Wales: Cymru South,Trethomas Bluebirds,Llantwit Major,87.8,6,8,ObMWpuoJ,15594916,1.22,no_goal,0-0,2026-11-07
+2026-11-07,17:00,England: Southern League Premier Central,Kettering,Redditch,88.6,10,10,YkoNe0V6,15595276,1.25,goal,1-0,2026-11-07
+2026-11-07,18:00,England: Premier League 2,Southampton U21,Norwich U21,88.2,8,9,IXgyPypm,15594446,,goal,3-1,2026-11-07
+2026-11-07,21:30,Andorra: Primera Divisió,Casa de Portugal,Esperanca,87.7,6,6,rTMCthLh,15596867,,goal,1-2,2026-11-07
