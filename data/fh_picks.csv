@@ -180,11 +180,11 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-09,21:00,England: Premier League 2,Middlesbrough U21,Derby U21,82.3,8,6,fuxuWAcU,15627228,,no_goal,0-0,2026-11-09
 2026-11-09,21:45,England: Southern League Premier Central,Redditch,Peterborough Sports,87.1,10,10,pWF0hntC,15627231,1.23,no_goal,0-0,2026-11-10
 2026-11-09,22:00,Peru: Liga Women,U. de Deportes W,FBC Melgar W,82.4,7,5,WKZCLNQN,15657641,,goal,4-0,2026-11-10
-2026-11-10,16:00,England: Professional Development League,Colchester U21,Charlton U21,88.6,5,8,lCSA5gfE,15641431,,pending,,
-2026-11-10,19:45,Europe: UEFA Champions League Women,Real Madrid W,Paris FC W,82.0,10,9,AkipgQFb,15641500,1.22,pending,,
-2026-11-10,20:00,Europe: UEFA Europa Cup Women,Feyenoord W,Wolfsburg W,81.9,9,10,jwxSkpcM,15641564,,pending,,
-2026-11-10,21:00,England: EFL Trophy,Leicester,Walsall,84.8,10,10,65A7tonT,15641603,1.14,pending,,
-2026-11-10,21:00,England: EFL Trophy,Mansfield,Chesterfield,82.7,10,10,8CNljtc4,15641598,1.22,pending,,
+2026-11-10,16:00,England: Professional Development League,Colchester U21,Charlton U21,88.6,5,8,lCSA5gfE,15641431,,goal,0-4,2026-11-10
+2026-11-10,19:45,Europe: UEFA Champions League Women,Real Madrid W,Paris FC W,82.0,10,9,AkipgQFb,15641500,1.22,no_goal,0-0,2026-11-10
+2026-11-10,20:00,Europe: UEFA Europa Cup Women,Feyenoord W,Wolfsburg W,81.9,9,10,jwxSkpcM,15641564,,no_goal,0-0,2026-11-10
+2026-11-10,21:00,England: EFL Trophy,Leicester,Walsall,84.8,10,10,65A7tonT,15641603,1.14,goal,2-1,2026-11-10
+2026-11-10,21:00,England: EFL Trophy,Mansfield,Chesterfield,82.7,10,10,8CNljtc4,15641598,1.22,goal,2-1,2026-11-10
 2026-11-10,21:45,England: Southern League Premier Central,Anstey Nomads,Kettering,88.4,10,10,hdJ8jQAO,15641628,1.24,pending,,
 2026-11-10,21:45,England: Isthmian League Premier Division,Enfield Town,Lewes,82.0,10,10,Y3Kjw7Hq,15641656,,pending,,
 2026-11-10,21:45,England: Southern League Premier Central,Leamington,Bromsgrove,83.8,10,10,tz7P87Qh,15641630,1.27,pending,,
