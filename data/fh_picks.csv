@@ -206,5 +206,15 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-13,20:00,France: Premiere Ligue Women,Nantes W,Lens W,80.9,7,7,IB415HWO,15705470,1.26,no_goal,0-0,2026-11-13
 2026-11-13,20:00,Switzerland: Super League Women,Rapperswil-Jona W,Grasshopper W,89.2,5,5,4I9RKCDt,15689116,,goal,1-1,2026-11-13
 2026-11-13,20:30,Austria: Burgenland,Neusiedl,Lackenbach,82.6,8,8,Sh8NCyVg,15689226,,no_goal,0-0,2026-11-13
-2026-11-13,21:45,Wales: FAW Welsh Cup,Caernarfon,Holywell,87.8,9,7,Iafc6BMN,15580120,,pending,,
-2026-11-13,21:45,Wales: FAW Welsh Cup,Penybont,Cardiff Draconians,81.5,8,7,SSGHgYxI,15580117,,pending,,
+2026-11-13,21:45,Wales: FAW Welsh Cup,Caernarfon,Holywell,87.8,9,7,Iafc6BMN,15580120,,goal,3-0,2026-11-14
+2026-11-13,21:45,Wales: FAW Welsh Cup,Penybont,Cardiff Draconians,81.5,8,7,SSGHgYxI,15580117,,goal,3-0,2026-11-14
+2026-11-14,11:00,Czech Republic: 4. liga - Group C,Slavia HK,Hlinsko,87.7,9,8,6uZIYUVp,15704009,,pending,,
+2026-11-14,11:15,Czech Republic: 4. liga - Group F,Bridlicna,Opava B,88.4,8,8,bwzXyhjJ,15919066,,pending,,
+2026-11-14,11:15,Czech Republic: 4. liga - Group A,Krimice,Nyrsko,89.9,7,8,URBiXhim,15704002,,pending,,
+2026-11-14,11:15,Czech Republic: 4. liga - Group F,Vratimov,Hlucin,87.9,8,8,AZU8sdMs,15704010,,pending,,
+2026-11-14,12:00,Germany: DFB Youth League,Chemnitzer FC U19,Hallescher U19,89.7,7,5,SGGBoLTQ,15704039,,pending,,
+2026-11-14,15:00,Czech Republic: 4. liga - Group A,Doubravka,Spartak Pribram,87.3,7,8,WxTZEByJ,15704467,,pending,,
+2026-11-14,15:00,Czech Republic: 4. liga - Group C,Kosmonosy,Trutnov,88.0,8,8,rkQutDwB,15704473,,pending,,
+2026-11-14,17:00,England: FA Trophy,Worksop,South Shields,88.1,9,10,8UxsqEPO,15705139,1.27,pending,,
+2026-11-14,19:00,Switzerland: Super League Women,Yverdon W,Young Boys W,88.8,5,5,CrDZIjrg,15705454,1.2,pending,,
+2026-11-14,20:00,Brazil: Mineiro Women,Cruzeiro W,America Mineiro W,87.5,10,5,f3vbnFjR,15706364,,pending,,
