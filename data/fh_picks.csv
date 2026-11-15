@@ -218,13 +218,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-14,17:00,England: FA Trophy,Worksop,South Shields,88.1,9,10,8UxsqEPO,15705139,1.27,no_goal,0-0,2026-11-14
 2026-11-14,19:00,Switzerland: Super League Women,Yverdon W,Young Boys W,88.8,5,5,CrDZIjrg,15705454,1.2,goal,1-0,2026-11-14
 2026-11-14,20:00,Brazil: Mineiro Women,Cruzeiro W,America Mineiro W,87.5,10,5,f3vbnFjR,15706364,,goal,3-1,2026-11-14
-2026-11-15,11:15,Czech Republic: 3. CFL - Group A,Bohemians 1905 B,Kraluv Dvur,89.8,8,9,WKopVfU0,15648502,,pending,,
-2026-11-15,11:30,Slovakia: 2. liga,Zilina B,I. Bratislava,86.1,8,9,MB9Y0xRr,15613867,,pending,,
-2026-11-15,13:00,Poland: Ekstraliga Women,Slask Wroclaw W,Leczna W,86.9,6,6,0C15qfVA,15704072,,pending,,
-2026-11-15,13:45,Greece: Division A Women,PAOK W,Panathinaikos W,88.1,8,5,dMXoWq6D,15721536,,pending,,
-2026-11-15,15:00,Sweden: Allsvenskan Women,Eskilstuna Utd W,Djurgarden W,87.9,8,8,CYMuLYEL,15721762,1.25,pending,,
-2026-11-15,15:00,Scotland: SWPL 1 Women,Glasgow City W,Montrose W,86.5,7,7,Y7APKA1M,15721770,,pending,,
-2026-11-15,15:00,Greece: Division A Women,Kifisia W,Volos W,89.1,6,5,0IQ0ulqR,15721863,,pending,,
-2026-11-15,15:00,Czech Republic: 4. liga - Group A,Milevsko,SK Strakonice 1908,90.2,7,8,6HCKIgxf,15721779,,pending,,
-2026-11-15,15:00,Sweden: Allsvenskan Women,Norrkoping W,AIK W,88.2,7,8,Cd5SBUy8,15721763,1.24,pending,,
-2026-11-15,18:00,Czech Republic: 3. CFL - Group A,Pisek,Benesov,87.4,8,8,WvxvixiK,15722289,,pending,,
+2026-11-15,11:15,Czech Republic: 3. CFL - Group A,Bohemians 1905 B,Kraluv Dvur,89.8,8,9,WKopVfU0,15648502,,goal,1-0,2026-11-15
+2026-11-15,11:30,Slovakia: 2. liga,Zilina B,I. Bratislava,86.1,8,9,MB9Y0xRr,15613867,,goal,0-1,2026-11-15
+2026-11-15,13:00,Poland: Ekstraliga Women,Slask Wroclaw W,Leczna W,86.9,6,6,0C15qfVA,15704072,,no_goal,0-0,2026-11-15
+2026-11-15,13:45,Greece: Division A Women,PAOK W,Panathinaikos W,88.1,8,5,dMXoWq6D,15721536,,goal,1-1,2026-11-15
+2026-11-15,15:00,Sweden: Allsvenskan Women,Eskilstuna Utd W,Djurgarden W,87.9,8,8,CYMuLYEL,15721762,1.25,no_goal,0-0,2026-11-15
+2026-11-15,15:00,Scotland: SWPL 1 Women,Glasgow City W,Montrose W,86.5,7,7,Y7APKA1M,15721770,,goal,4-0,2026-11-15
+2026-11-15,15:00,Greece: Division A Women,Kifisia W,Volos W,89.1,6,5,0IQ0ulqR,15721863,,goal,0-1,2026-11-15
+2026-11-15,15:00,Czech Republic: 4. liga - Group A,Milevsko,SK Strakonice 1908,90.2,7,8,6HCKIgxf,15721779,,goal,0-2,2026-11-15
+2026-11-15,15:00,Sweden: Allsvenskan Women,Norrkoping W,AIK W,88.2,7,8,Cd5SBUy8,15721763,1.24,no_goal,0-0,2026-11-15
+2026-11-15,18:00,Czech Republic: 3. CFL - Group A,Pisek,Benesov,87.4,8,8,WvxvixiK,15722289,,goal,1-0,2026-11-15
