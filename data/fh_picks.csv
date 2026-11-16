@@ -228,7 +228,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-15,15:00,Czech Republic: 4. liga - Group A,Milevsko,SK Strakonice 1908,90.2,7,8,6HCKIgxf,15721779,,goal,0-2,2026-11-15
 2026-11-15,15:00,Sweden: Allsvenskan Women,Norrkoping W,AIK W,88.2,7,8,Cd5SBUy8,15721763,1.24,no_goal,0-0,2026-11-15
 2026-11-15,18:00,Czech Republic: 3. CFL - Group A,Pisek,Benesov,87.4,8,8,WvxvixiK,15722289,,goal,1-0,2026-11-15
-2026-11-16,17:00,Portugal: Liga Next Gen U23,Felgueiras U23,Leixoes U23,80.8,6,5,hGoq38Ej,15418911,,pending,,
-2026-11-16,18:00,Slovakia: 2. liga,Presov,Zvolen,82.5,9,9,hEAe8KY8,15517429,,pending,,
-2026-11-16,21:00,North & Central America: CONCACAF Nations League,Cuba,Grenada,84.3,5,5,SQDRBcn2,15564705,1.19,pending,,
-2026-11-16,21:30,Spain: LaLiga2,Albacete,Celta Vigo B,82.1,9,8,treV3LR6,14558864,1.28,pending,,
+2026-11-16,17:00,Portugal: Liga Next Gen U23,Felgueiras U23,Leixoes U23,80.8,6,5,hGoq38Ej,15418911,,no_goal,0-0,2026-11-16
+2026-11-16,18:00,Slovakia: 2. liga,Presov,Zvolen,82.5,9,9,hEAe8KY8,15517429,,no_goal,0-0,2026-11-16
+2026-11-16,21:00,North & Central America: CONCACAF Nations League,Cuba,Grenada,84.3,5,5,SQDRBcn2,15564705,1.19,goal,4-0,2026-11-16
+2026-11-16,21:30,Spain: LaLiga2,Albacete,Celta Vigo B,82.1,9,8,treV3LR6,14558864,1.28,goal,1-0,2026-11-16
