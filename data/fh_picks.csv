@@ -236,9 +236,19 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-17,18:30,Croatia: Druga NL,Koprivnica,Solin,80.8,8,8,OMv8xjwA,15813157,,goal,0-2,2026-11-17
 2026-11-17,21:00,England: EFL Trophy,Luton,Peterborough,85.6,10,10,r5fP3Eqf,15752323,1.17,goal,2-0,2026-11-17
 2026-11-17,21:00,North & Central America: CONCACAF Nations League,Saint Kitts and Nevis,Bonaire,86.5,5,5,OlB6OzW7,15564707,1.11,goal,1-2,2026-11-17
-2026-11-17,21:45,England: Isthmian League Premier Division,Burgess Hill,Brentwood,83.4,10,10,bimjpLDT,15752407,,pending,,
-2026-11-17,21:45,England: Southern League Premier South,Chippenham,Sholing,84.1,10,10,2iEQmjgC,15752397,1.32,pending,,
-2026-11-17,21:45,England: Isthmian League Premier Division,Dartford,Three Bridges,84.9,10,10,dOQCpkP9,15752402,,pending,,
-2026-11-17,21:45,England: Southern League Premier Central,Leamington,Halesowen,90.5,10,10,jH6AstzG,15957584,1.25,pending,,
-2026-11-17,21:45,England: Southern League Premier Central,Leiston,Stratford,83.5,10,10,8AzkeZw3,15958092,1.24,pending,,
-2026-11-17,21:45,England: Southern League Premier Central,Worcester,Kettering,88.7,10,10,I3SznV0k,15752399,1.31,pending,,
+2026-11-17,21:45,England: Isthmian League Premier Division,Burgess Hill,Brentwood,83.4,10,10,bimjpLDT,15752407,,goal,0-1,2026-11-18
+2026-11-17,21:45,England: Southern League Premier South,Chippenham,Sholing,84.1,10,10,2iEQmjgC,15752397,1.32,goal,1-1,2026-11-18
+2026-11-17,21:45,England: Isthmian League Premier Division,Dartford,Three Bridges,84.9,10,10,dOQCpkP9,15752402,,no_goal,0-0,2026-11-18
+2026-11-17,21:45,England: Southern League Premier Central,Leamington,Halesowen,90.5,10,10,jH6AstzG,15957584,1.25,goal,0-1,2026-11-18
+2026-11-17,21:45,England: Southern League Premier Central,Leiston,Stratford,83.5,10,10,8AzkeZw3,15958092,1.24,no_goal,0-0,2026-11-18
+2026-11-17,21:45,England: Southern League Premier Central,Worcester,Kettering,88.7,10,10,I3SznV0k,15752399,1.31,no_goal,0-0,2026-11-18
+2026-11-18,12:00,Turkey: 2. Lig White Group,Adana Demirspor,Kastamonuspor,82.2,10,10,8Ujy2Bfe,15767229,,pending,,
+2026-11-18,12:00,Turkey: 2. Lig Red Group,Ankara Demirspor,52 Orduspor,82.6,10,9,SfimGi1U,15767233,,pending,,
+2026-11-18,12:00,Turkey: 2. Lig Red Group,Trabzon FK,K. İstiklalspor,82.2,9,10,r7Rdzenn,15767234,,pending,,
+2026-11-18,13:30,Poland: Central Youth League,Rakow Czestochowa U19,Legia U19,81.0,8,9,bJuVtq66,15594222,,pending,,
+2026-11-18,15:00,England: Professional Development League,Peterborough U21,Bolton U21,87.8,7,7,2ZETAlWg,15767297,,pending,,
+2026-11-18,20:00,Germany: Regionalliga North,Jeddeloh,Phonix Lubeck,84.6,9,7,QPilcpbf,15704725,1.16,pending,,
+2026-11-18,21:00,England: Women's League Cup,London City Lionesses W,Brighton W,80.0,10,10,Ua96Ec9E,15767572,,pending,,
+2026-11-18,21:00,England: Women's League Cup,West Ham W,Wolverhampton W,81.0,10,7,8CZofTNa,15767570,,pending,,
+2026-11-18,21:45,England: Southern League Premier South,Gosport,Chertsey,83.7,10,10,tz3S4cnf,15767629,1.2,pending,,
+2026-11-18,21:45,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,87.8,8,8,j9OrlCQp,15767631,,pending,,
