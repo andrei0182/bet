@@ -232,7 +232,7 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-16,18:00,Slovakia: 2. liga,Presov,Zvolen,82.5,9,9,hEAe8KY8,15517429,,no_goal,0-0,2026-11-16
 2026-11-16,21:00,North & Central America: CONCACAF Nations League,Cuba,Grenada,84.3,5,5,SQDRBcn2,15564705,1.19,goal,4-0,2026-11-16
 2026-11-16,21:30,Spain: LaLiga2,Albacete,Celta Vigo B,82.1,9,8,treV3LR6,14558864,1.28,goal,1-0,2026-11-16
-2026-11-17,16:00,England: Professional Development League,Sheffield Utd U21,Huddersfield U21,88.7,8,5,bwQkIWwK,15752137,,pending,,
+2026-11-17,16:00,England: Professional Development League,Sheffield Utd U21,Huddersfield U21,88.7,8,5,bwQkIWwK,15752137,,void,,2026-11-19
 2026-11-17,18:30,Croatia: Druga NL,Koprivnica,Solin,80.8,8,8,OMv8xjwA,15813157,,goal,0-2,2026-11-17
 2026-11-17,21:00,England: EFL Trophy,Luton,Peterborough,85.6,10,10,r5fP3Eqf,15752323,1.17,goal,2-0,2026-11-17
 2026-11-17,21:00,North & Central America: CONCACAF Nations League,Saint Kitts and Nevis,Bonaire,86.5,5,5,OlB6OzW7,15564707,1.11,goal,1-2,2026-11-17
@@ -250,5 +250,6 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-18,20:00,Germany: Regionalliga North,Jeddeloh,Phonix Lubeck,84.6,9,7,QPilcpbf,15704725,1.16,no_goal,0-0,2026-11-18
 2026-11-18,21:00,England: Women's League Cup,London City Lionesses W,Brighton W,80.0,10,10,Ua96Ec9E,15767572,,no_goal,0-0,2026-11-18
 2026-11-18,21:00,England: Women's League Cup,West Ham W,Wolverhampton W,81.0,10,7,8CZofTNa,15767570,,no_goal,0-0,2026-11-18
-2026-11-18,21:45,England: Southern League Premier South,Gosport,Chertsey,83.7,10,10,tz3S4cnf,15767629,1.2,pending,,
-2026-11-18,21:45,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,87.8,8,8,j9OrlCQp,15767631,,pending,,
+2026-11-18,21:45,England: Southern League Premier South,Gosport,Chertsey,83.7,10,10,tz3S4cnf,15767629,1.2,goal,0-1,2026-11-19
+2026-11-18,21:45,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,87.8,8,8,j9OrlCQp,15767631,,goal,1-0,2026-11-19
+2026-11-19,16:30,Cameroon: Elite One,Aigle Royal,Colombe,80.5,5,6,d4xqeuaT,15936638,,pending,,
