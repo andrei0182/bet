@@ -253,13 +253,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-18,21:45,England: Southern League Premier South,Gosport,Chertsey,83.7,10,10,tz3S4cnf,15767629,1.2,goal,0-1,2026-11-19
 2026-11-18,21:45,Scotland: SWPL 1 Women,Partick Thistle W,Glasgow City W,87.8,8,8,j9OrlCQp,15767631,,goal,1-0,2026-11-19
 2026-11-19,16:30,Cameroon: Elite One,Aigle Royal,Colombe,80.5,5,6,d4xqeuaT,15936638,,no_goal,0-0,2026-11-19
-2026-11-20,14:45,United Arab Emirates: Division 1,Al Hamriyah,Al Thaid,85.0,5,6,Yy6geu7F,15797615,1.31,pending,,
-2026-11-20,20:00,Switzerland: Super League Women,Grasshopper W,Basel W,86.7,5,5,dj9MT7dB,15797935,,pending,,
-2026-11-20,20:00,Norway: Eliteserien,Molde,Bodo/Glimt,85.4,6,9,Ueb0KAF7,14670930,1.13,pending,,
-2026-11-20,20:30,Germany: Regionalliga West,Wiedenbruck,Bochum II,85.8,7,7,fm2wYpYQ,15798008,1.22,pending,,
-2026-11-20,21:00,Belgium: Pro League U21,Beerschot VA U21,Francs Borains U21,86.9,5,5,QiOlWLmB,15798076,1.15,pending,,
-2026-11-20,21:00,Netherlands: Eerste Divisie,FC Volendam,Jong Ajax,88.8,9,5,vJpmrRL5,15798034,1.14,pending,,
-2026-11-20,21:00,Netherlands: Eerste Divisie,Helmond,Dordrecht,85.6,9,9,nqlet5jI,15798035,1.26,pending,,
-2026-11-20,21:00,Netherlands: Eerste Divisie,Vitesse,Jong AZ,86.9,8,5,WIAQvDWA,15798039,1.26,pending,,
+2026-11-20,14:45,United Arab Emirates: Division 1,Al Hamriyah,Al Thaid,85.0,5,6,Yy6geu7F,15797615,1.31,no_goal,0-0,2026-11-20
+2026-11-20,20:00,Switzerland: Super League Women,Grasshopper W,Basel W,86.7,5,5,dj9MT7dB,15797935,,goal,2-0,2026-11-20
+2026-11-20,20:00,Norway: Eliteserien,Molde,Bodo/Glimt,85.4,6,9,Ueb0KAF7,14670930,1.13,goal,0-2,2026-11-20
+2026-11-20,20:30,Germany: Regionalliga West,Wiedenbruck,Bochum II,85.8,7,7,fm2wYpYQ,15798008,1.22,no_goal,0-0,2026-11-20
+2026-11-20,21:00,Belgium: Pro League U21,Beerschot VA U21,Francs Borains U21,86.9,5,5,QiOlWLmB,15798076,1.15,goal,0-1,2026-11-20
+2026-11-20,21:00,Netherlands: Eerste Divisie,FC Volendam,Jong Ajax,88.8,9,5,vJpmrRL5,15798034,1.14,goal,1-0,2026-11-20
+2026-11-20,21:00,Netherlands: Eerste Divisie,Helmond,Dordrecht,85.6,9,9,nqlet5jI,15798035,1.26,goal,3-0,2026-11-20
+2026-11-20,21:00,Netherlands: Eerste Divisie,Vitesse,Jong AZ,86.9,8,5,WIAQvDWA,15798039,1.26,goal,0-3,2026-11-20
 2026-11-20,21:45,Wales: Cymru Premier,Briton Ferry,Holywell,85.3,8,6,z77eZwNc,15798155,1.16,pending,,
 2026-11-20,21:45,Wales: Cymru South,Caerphilly,Llanelli,85.4,8,7,KK4l3M0m,15798163,1.13,pending,,
