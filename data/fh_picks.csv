@@ -261,5 +261,15 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-20,21:00,Netherlands: Eerste Divisie,FC Volendam,Jong Ajax,88.8,9,5,vJpmrRL5,15798034,1.14,goal,1-0,2026-11-20
 2026-11-20,21:00,Netherlands: Eerste Divisie,Helmond,Dordrecht,85.6,9,9,nqlet5jI,15798035,1.26,goal,3-0,2026-11-20
 2026-11-20,21:00,Netherlands: Eerste Divisie,Vitesse,Jong AZ,86.9,8,5,WIAQvDWA,15798039,1.26,goal,0-3,2026-11-20
-2026-11-20,21:45,Wales: Cymru Premier,Briton Ferry,Holywell,85.3,8,6,z77eZwNc,15798155,1.16,pending,,
-2026-11-20,21:45,Wales: Cymru South,Caerphilly,Llanelli,85.4,8,7,KK4l3M0m,15798163,1.13,pending,,
+2026-11-20,21:45,Wales: Cymru Premier,Briton Ferry,Holywell,85.3,8,6,z77eZwNc,15798155,1.16,no_goal,0-0,2026-11-21
+2026-11-20,21:45,Wales: Cymru South,Caerphilly,Llanelli,85.4,8,7,KK4l3M0m,15798163,1.13,goal,1-0,2026-11-21
+2026-11-21,12:00,Germany: DFB Youth League,Cottbus U19,Braunschweig U19,90.0,5,6,nNjNcOIj,15812787,,pending,,
+2026-11-21,13:00,Portugal: Campeonato Nacional U19,SC Farense U19,Santa Clara U19,87.3,6,7,4vk365PO,15812874,,pending,,
+2026-11-21,14:00,Germany: DFB Youth League,Stuttgarter Kickers U19,Freiburg U19,89.7,5,5,KlzO5MnC,15813007,,pending,,
+2026-11-21,15:00,Turkey: Super Lig,Galatasaray,Samsunspor,86.7,8,5,0KJkosFG,14670920,1.17,pending,,
+2026-11-21,15:00,Germany: DFB Youth League,Hoffenheim U19,Heidenheim U19,88.7,7,5,SEwW30HO,15813331,,pending,,
+2026-11-21,16:00,Netherlands: Tweede Divisie,Jong Sparta Rotterdam,Quick Boys,86.8,7,8,dhERpE2m,15648203,1.14,pending,,
+2026-11-21,17:00,England: Southern League Premier Central,Kettering,Needham Market,88.3,10,10,8QzwuW6l,15813818,1.25,pending,,
+2026-11-21,17:00,England: National League North,Radcliffe,AFC Telford,87.8,7,8,lrwbKeJ6,15813786,1.21,pending,,
+2026-11-21,19:45,Scotland: Premiership,Dundee FC,Hearts,88.0,5,9,KMHn9rGM,15729554,1.34,pending,,
+2026-11-21,22:00,Canada: Canadian Premier League,Cavalry,Atl. Ottawa,91.1,8,7,tvgTC1m2,15858641,1.2,pending,,
