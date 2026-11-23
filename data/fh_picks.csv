@@ -284,12 +284,12 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-22,17:30,Switzerland: Super League Women,Zurich W,Yverdon W,87.6,5,5,lQ5EVTRb,15830115,,goal,1-0,2026-11-23
 2026-11-22,18:00,Turkey: Super Lig,Trabzonspor,Eyupspor,86.5,8,6,rsY1zQ0b,14670884,1.18,goal,1-0,2026-11-23
 2026-11-23,15:00,England: Professional Development League,Barnsley U21,Bolton U21,89.3,5,7,AaIy9S06,15845188,,pending,,
-2026-11-23,16:00,Italy: Primavera 1,Albinoleffe U20,Genoa U20,86.9,5,6,EuRRAiA5,15845194,,pending,,
-2026-11-23,19:00,Turkey: Super Lig,Basaksehir,Corum,80.2,5,5,d4vIWs0N,14670887,1.27,pending,,
-2026-11-23,19:00,Cyprus: Cyprus League,Krasava,Anorthosis,80.5,6,5,UTExwjVA,15660780,1.4,pending,,
-2026-11-23,20:00,Austria: Bundesliga Women,Austria Vienna W,First Vienna W,81.5,9,6,vuMi2wEl,15845283,,pending,,
-2026-11-23,21:00,England: Premier League Cup,Bournemouth U21,Leicester U21,83.3,5,8,nurwjGNc,15845309,1.14,pending,,
-2026-11-23,21:00,Netherlands: Eerste Divisie,Jong Ajax,Jong AZ,88.8,6,6,8b44XUOp,15845307,1.16,pending,,
-2026-11-23,21:00,Netherlands: Eerste Divisie,Jong PSV,Jong Utrecht,80.4,7,6,0hijeYGi,15845308,1.18,pending,,
-2026-11-23,21:00,Netherlands: Eerste Divisie,Vitesse,De Graafschap,81.6,9,9,ELn1Fyn2,15905824,1.26,pending,,
+2026-11-23,16:00,Italy: Primavera 1,Albinoleffe U20,Genoa U20,86.9,5,6,EuRRAiA5,15845194,,goal,0-3,2026-11-23
+2026-11-23,19:00,Turkey: Super Lig,Basaksehir,Corum,80.2,5,5,d4vIWs0N,14670887,1.27,goal,0-1,2026-11-23
+2026-11-23,19:00,Cyprus: Cyprus League,Krasava,Anorthosis,80.5,6,5,UTExwjVA,15660780,1.4,goal,0-2,2026-11-23
+2026-11-23,20:00,Austria: Bundesliga Women,Austria Vienna W,First Vienna W,81.5,9,6,vuMi2wEl,15845283,,no_goal,0-0,2026-11-23
+2026-11-23,21:00,England: Premier League Cup,Bournemouth U21,Leicester U21,83.3,5,8,nurwjGNc,15845309,1.14,goal,3-1,2026-11-23
+2026-11-23,21:00,Netherlands: Eerste Divisie,Jong Ajax,Jong AZ,88.8,6,6,8b44XUOp,15845307,1.16,no_goal,0-0,2026-11-23
+2026-11-23,21:00,Netherlands: Eerste Divisie,Jong PSV,Jong Utrecht,80.4,7,6,0hijeYGi,15845308,1.18,goal,1-2,2026-11-23
+2026-11-23,21:00,Netherlands: Eerste Divisie,Vitesse,De Graafschap,81.6,9,9,ELn1Fyn2,15905824,1.26,no_goal,0-0,2026-11-23
 2026-11-23,23:00,Portugal: Liga Next Gen U23,Santa Clara U23,Maritimo U23,82.4,8,5,Kv18eNBl,15845334,,pending,,
