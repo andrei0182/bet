@@ -273,13 +273,23 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-21,17:00,England: National League North,Radcliffe,AFC Telford,87.8,7,8,lrwbKeJ6,15813786,1.21,goal,2-3,2026-11-21
 2026-11-21,19:45,Scotland: Premiership,Dundee FC,Hearts,88.0,5,9,KMHn9rGM,15729554,1.34,goal,0-4,2026-11-21
 2026-11-21,22:00,Canada: Canadian Premier League,Cavalry,Atl. Ottawa,91.1,8,7,tvgTC1m2,15858641,1.2,goal,1-0,2026-11-22
-2026-11-22,13:00,Greece: Division A Women,Panathinaikos W,AEK Athens FC W,86.5,5,5,IVUplIRb,15829521,,pending,,
-2026-11-22,14:30,Norway: OBOS-ligaen,Odd,Bryne,87.7,8,8,ELCHhbIi,15880869,1.21,pending,,
-2026-11-22,15:00,Greece: Division A Women,Asteras Tripolis W,PAOK W,89.4,5,8,ngBRrNkJ,15829201,,pending,,
-2026-11-22,15:00,Greece: Division A Women,Kifisia W,Seirines Grevenon W,89.2,6,6,KbB3lRLs,15829516,,pending,,
-2026-11-22,17:00,Luxembourg: BGL Ligue,Hostert,Rumelange,90.8,5,5,ERZDBS0S,15829870,,pending,,
-2026-11-22,17:00,Luxembourg: BGL Ligue,Kaerjeng,Mondorf,85.7,5,5,AcLq66Ok,15829871,,pending,,
-2026-11-22,17:00,Luxembourg: BGL Ligue,Racing Luxembourg,Wiltz,84.5,5,5,8UW5DlWF,15829869,,pending,,
-2026-11-22,17:00,Switzerland: Super League Women,Servette Geneve FC W,St. Gallen W,85.6,10,5,QmSdDnCU,15829849,,pending,,
-2026-11-22,17:30,Switzerland: Super League Women,Zurich W,Yverdon W,87.6,5,5,lQ5EVTRb,15830115,,pending,,
-2026-11-22,18:00,Turkey: Super Lig,Trabzonspor,Eyupspor,86.5,8,6,rsY1zQ0b,14670884,1.18,pending,,
+2026-11-22,13:00,Greece: Division A Women,Panathinaikos W,AEK Athens FC W,86.5,5,5,IVUplIRb,15829521,,goal,1-0,2026-11-23
+2026-11-22,14:30,Norway: OBOS-ligaen,Odd,Bryne,87.7,8,8,ELCHhbIi,15880869,1.21,goal,1-0,2026-11-23
+2026-11-22,15:00,Greece: Division A Women,Asteras Tripolis W,PAOK W,89.4,5,8,ngBRrNkJ,15829201,,no_goal,0-0,2026-11-23
+2026-11-22,15:00,Greece: Division A Women,Kifisia W,Seirines Grevenon W,89.2,6,6,KbB3lRLs,15829516,,goal,0-1,2026-11-23
+2026-11-22,17:00,Luxembourg: BGL Ligue,Hostert,Rumelange,90.8,5,5,ERZDBS0S,15829870,,goal,2-1,2026-11-23
+2026-11-22,17:00,Luxembourg: BGL Ligue,Kaerjeng,Mondorf,85.7,5,5,AcLq66Ok,15829871,,goal,0-2,2026-11-23
+2026-11-22,17:00,Luxembourg: BGL Ligue,Racing Luxembourg,Wiltz,84.5,5,5,8UW5DlWF,15829869,,goal,3-1,2026-11-23
+2026-11-22,17:00,Switzerland: Super League Women,Servette Geneve FC W,St. Gallen W,85.6,10,5,QmSdDnCU,15829849,,goal,3-0,2026-11-23
+2026-11-22,17:30,Switzerland: Super League Women,Zurich W,Yverdon W,87.6,5,5,lQ5EVTRb,15830115,,goal,1-0,2026-11-23
+2026-11-22,18:00,Turkey: Super Lig,Trabzonspor,Eyupspor,86.5,8,6,rsY1zQ0b,14670884,1.18,goal,1-0,2026-11-23
+2026-11-23,15:00,England: Professional Development League,Barnsley U21,Bolton U21,89.3,5,7,AaIy9S06,15845188,,pending,,
+2026-11-23,16:00,Italy: Primavera 1,Albinoleffe U20,Genoa U20,86.9,5,6,EuRRAiA5,15845194,,pending,,
+2026-11-23,19:00,Turkey: Super Lig,Basaksehir,Corum,80.2,5,5,d4vIWs0N,14670887,1.27,pending,,
+2026-11-23,19:00,Cyprus: Cyprus League,Krasava,Anorthosis,80.5,6,5,UTExwjVA,15660780,1.4,pending,,
+2026-11-23,20:00,Austria: Bundesliga Women,Austria Vienna W,First Vienna W,81.5,9,6,vuMi2wEl,15845283,,pending,,
+2026-11-23,21:00,England: Premier League Cup,Bournemouth U21,Leicester U21,83.3,5,8,nurwjGNc,15845309,1.14,pending,,
+2026-11-23,21:00,Netherlands: Eerste Divisie,Jong Ajax,Jong AZ,88.8,6,6,8b44XUOp,15845307,1.16,pending,,
+2026-11-23,21:00,Netherlands: Eerste Divisie,Jong PSV,Jong Utrecht,80.4,7,6,0hijeYGi,15845308,1.18,pending,,
+2026-11-23,21:00,Netherlands: Eerste Divisie,Vitesse,De Graafschap,81.6,9,9,ELn1Fyn2,15905824,1.26,pending,,
+2026-11-23,23:00,Portugal: Liga Next Gen U23,Santa Clara U23,Maritimo U23,82.4,8,5,Kv18eNBl,15845334,,pending,,
