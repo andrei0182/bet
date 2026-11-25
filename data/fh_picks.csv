@@ -303,13 +303,13 @@ date,kickoff_local,league,home,away,probability,home_n,away_n,match_id,superbet_
 2026-11-24,21:45,England: Southern League Premier South,Malvern Town,Hanworth,84.7,9,10,6RicP9Bm,16068462,1.22,goal,1-2,2026-11-25
 2026-11-24,21:45,Scotland: Challenge Cup,Ross County,Stenhousemuir,84.7,10,10,hO3tUsT6,15841306,1.25,pending,,
 2026-11-24,21:45,England: National League North,South Shields,Worksop,86.1,10,9,beLNu3op,15859278,1.19,goal,0-1,2026-11-25
-2026-11-25,12:00,Czech Republic: U19 League,Sigma Olomouc U19,Ostrava U19,85.9,6,6,j3mZoOQE,15875030,,pending,,
-2026-11-25,14:00,Europe: UEFA Youth League,Shakhtar Donetsk U19,Fenerbahce U19,82.1,8,8,O62KUEAm,15674716,1.15,pending,,
-2026-11-25,15:00,England: Professional Development League,Peterborough U21,Hull U21,82.0,9,8,rDGq76VI,15875090,,pending,,
-2026-11-25,17:00,Russia: FNL,Kamaz,Yenisey,81.4,6,9,dIVQmbt2,15859055,1.36,pending,,
-2026-11-25,19:30,Russia: Russian Cup,Lokomotiv Moscow,FK Rostov,81.3,7,8,tY1ZrKhM,15710466,1.32,pending,,
-2026-11-25,19:45,Europe: Champions League,Sabah FC,Barcelona,82.3,6,9,QqI3ne15,14804355,1.1,pending,,
-2026-11-25,21:00,Italy: Serie B,Padova,Sampdoria,82.5,7,7,nTyHnrGN,14701613,1.44,pending,,
-2026-11-25,21:00,Netherlands: Derde Divisie,Roosendaal,Gemert,81.5,8,8,U1fVUzxo,15875394,,pending,,
+2026-11-25,12:00,Czech Republic: U19 League,Sigma Olomouc U19,Ostrava U19,85.9,6,6,j3mZoOQE,15875030,,goal,0-2,2026-11-25
+2026-11-25,14:00,Europe: UEFA Youth League,Shakhtar Donetsk U19,Fenerbahce U19,82.1,8,8,O62KUEAm,15674716,1.15,goal,4-0,2026-11-25
+2026-11-25,15:00,England: Professional Development League,Peterborough U21,Hull U21,82.0,9,8,rDGq76VI,15875090,,goal,1-0,2026-11-25
+2026-11-25,17:00,Russia: FNL,Kamaz,Yenisey,81.4,6,9,dIVQmbt2,15859055,1.36,goal,1-1,2026-11-25
+2026-11-25,19:30,Russia: Russian Cup,Lokomotiv Moscow,FK Rostov,81.3,7,8,tY1ZrKhM,15710466,1.32,goal,0-2,2026-11-25
+2026-11-25,19:45,Europe: Champions League,Sabah FC,Barcelona,82.3,6,9,QqI3ne15,14804355,1.1,goal,0-1,2026-11-25
+2026-11-25,21:00,Italy: Serie B,Padova,Sampdoria,82.5,7,7,nTyHnrGN,14701613,1.44,goal,1-1,2026-11-25
+2026-11-25,21:00,Netherlands: Derde Divisie,Roosendaal,Gemert,81.5,8,8,U1fVUzxo,15875394,,goal,1-1,2026-11-25
 2026-11-25,21:45,England: Championship,Burnley,Birmingham,81.2,8,8,KzVYMr0d,14719691,1.34,pending,,
 2026-11-25,22:00,Europe: Champions League,Club Brugge KV,Liverpool,82.7,9,9,6wSZISyp,14805721,1.17,pending,,
